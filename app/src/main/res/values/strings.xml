@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Stord</string>
+
+    <!-- Basic strings -->
+    <string name="categories">Categories</string>
+    <string name="favorite">Favorite</string>
+    <string name="items">Items</string>
+    <string name="favorite_items">Favorite Items</string>
+
+    <!-- AddNew/custom -->
+    <string name="add_new">Add New</string>
+    <string name="custom">Customize</string>
+
+    <string name="category">Category</string>
+    <string name="item">Item</string>
+
+    <string name="image">Image</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+
+    <!-- Image description -->
+    <string name="ImageDesc">PlaceHolderImageDesc</string>
+</resources>
