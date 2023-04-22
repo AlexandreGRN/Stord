@@ -1,7 +1,7 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.Stord" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+    <style name="Theme.Stord" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->e
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -11,10 +11,17 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
+    <!-- Default Style -->
+
     <style name="DefaultStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- Bottom navigation bar -->
+    <style name="BottomNavigationBar" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

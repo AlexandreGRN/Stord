@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/favorite_page"
+        android:title="@string/favorite"
+        android:icon="@drawable/star"/>
+
+    <item
+        android:id="@+id/categories_page"
+        android:title="@string/categories"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/add_new_page"
+        android:title="@string/add_new"
+        android:icon="@drawable/add_new"/>
+
+</menu>
