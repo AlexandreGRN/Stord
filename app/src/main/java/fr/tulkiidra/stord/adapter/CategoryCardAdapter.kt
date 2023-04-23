@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import fr.tulkiidra.stord.R
 
-class BigCategoryCardAdapter : RecyclerView.Adapter<BigCategoryCardAdapter.ViewHolder>(){
+class CategoryCardAdapter(private val layoutId: Int) : RecyclerView.Adapter<CategoryCardAdapter.ViewHolder>(){
 
 
     class ViewHolder(bigCardView: View) : RecyclerView.ViewHolder(bigCardView){
@@ -17,7 +17,7 @@ class BigCategoryCardAdapter : RecyclerView.Adapter<BigCategoryCardAdapter.ViewH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_big_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
 
         return ViewHolder(view)
     }
