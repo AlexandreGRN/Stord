@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.tulkiidra.stord.CategoryModel
@@ -20,6 +21,9 @@ class CategoryCardAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val categoryCardImage = view?.findViewById<ImageView>(R.id.category_card_image)
+        val categoryName = view?.findViewById<TextView>(R.id.name_category)
+        val categoryDescription = view?.findViewById<TextView>(R.id.description_category)
+        val starIcon = view?.findViewById<ImageView>(R.id.star_icon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +38,14 @@ class CategoryCardAdapter(
         if (holder.categoryCardImage != null) {
             Glide.with(context).load(Uri.parse(currentCategory.imageUrl))
                 .into(holder.categoryCardImage)
+        }
+        holder.categoryName?.text = currentCategory.name
+        holder.categoryDescription?.text = currentCategory.description
+
+        if (currentCategory.favorite) {
+            holder.starIcon?.setImageResource(R.drawable.home)
+        } else {
+            holder.starIcon?.setImageResource(R.drawable.star)
         }
     }
 
