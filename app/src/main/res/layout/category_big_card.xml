@@ -25,7 +25,7 @@
             android:fontFamily="@font/steelfish"/>
 
         <ImageView
-            android:id="@+id/category_big_card"
+            android:id="@+id/category_card_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
