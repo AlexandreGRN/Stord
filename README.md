@@ -10,3 +10,4 @@ Stord is a Storage Management Application for Android
 |V.0.2.1 | Disabling the automatic rotation|
 |V.0.3.0 | Category object created|
 |V.0.3.1 | Item object created|
+|V.0.4.0 | Frame 2 added (Item and subcategory fragment)|
