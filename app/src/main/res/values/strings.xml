@@ -29,4 +29,8 @@
     <string name="emptyItem1">This category is empty</string>
     <string name="emptyItem2">You can try to add categories or items here</string>
 
+    <string name="emptyCategory1">You don\'t possess any item nor category</string>
+    <string name="emptyCategory2">You can try to create some using the \'create new\' tab</string>
+
+
 </resources>
