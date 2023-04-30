@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/category_favorite_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/favorite"
@@ -14,29 +13,12 @@
         android:layout_marginStart="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/horizontalCategoryRecyclerView"
+        android:id="@+id/favorite_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-    <TextView
-        android:id="@+id/category_category_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/categories" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/verticalCategoryRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
 </LinearLayout>

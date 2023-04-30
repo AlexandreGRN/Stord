@@ -21,4 +21,16 @@
 
     <!-- Image description -->
     <string name="ImageDesc">PlaceHolderImageDesc</string>
+
+    <!-- Error -->
+    <string name="emptyFav1">You don\'t have any favorite yet</string>
+    <string name="emptyFav2">You can add new by clicking on the star next to any object</string>
+
+    <string name="emptyItem1">This category is empty</string>
+    <string name="emptyItem2">You can try to add categories or items here</string>
+
+    <string name="emptyCategory1">You don\'t possess any item nor category</string>
+    <string name="emptyCategory2">You can try to create some using the \'create new\' tab</string>
+
+
 </resources>
