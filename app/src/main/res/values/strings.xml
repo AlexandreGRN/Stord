@@ -21,4 +21,8 @@
 
     <!-- Image description -->
     <string name="ImageDesc">PlaceHolderImageDesc</string>
+
+    <!-- Error -->
+    <string name="emptyFav1">You don\'t have any favorite yet</string>
+    <string name="emptyFav2">You can add new by clicking on the star next to any object</string>
 </resources>

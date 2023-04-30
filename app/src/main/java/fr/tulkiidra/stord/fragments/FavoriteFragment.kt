@@ -17,30 +17,28 @@ class FavoriteFragment(
 ) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.favorite_item, container, false)
-
         val itemList = arrayListOf<ItemModel>()
-        itemList.add(
-            ItemModel(
+
+        itemList.add(ItemModel(
             name = "Clé à molette",
             description = "Fait des trucs",
             imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
-            favorite = true)
-        )
-        itemList.add(
-            ItemModel(
+            favorite = false))
+        itemList.add(ItemModel(
             name = "Citroen",
             description = "C'est beau",
             imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
-            favorite = true)
-        )
-        itemList.add(
-            ItemModel(
+            favorite = false))
+        itemList.add(ItemModel(
             name = "Trombonne",
             description = "Je sais pas pourquoi c'est là",
             imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
-            favorite = true)
-        )
+            favorite = false))
+
+        if (itemList.isEmpty()) {
+            return inflater.inflate(R.layout.empty_favorite_item, container, false)
+        }
+        val view = inflater.inflate(R.layout.favorite_item, container, false)
 
         val favoriteRecycler = view?.findViewById<RecyclerView>(R.id.favorite_list)
         favoriteRecycler?.adapter = ItemCardAdapter(context, itemList, R.layout.item_long_card)
