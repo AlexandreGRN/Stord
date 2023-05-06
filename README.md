@@ -15,3 +15,10 @@ Stord is a Storage Management Application for Android
 |V.0.5.1 | Handle no favorite item display|
 |V.0.5.2 | Handle empty category display|
 |V.0.5.3 | Handle empty user account (no categories at all)|
+|V.0.6.0 |Create blueprint for item popup|
+|V.0.6.1 |Create blueprint for category popup|
+|V.0.6.2 |Item popup reponsive|
+|V.0.6.3 |Category popup reponsive|
+|V.0.6.4 |Change item object|
+|V.0.6.5 |Create all buttons in item popup|
+|V.0.6.6 |Create all buttons in category popup|
