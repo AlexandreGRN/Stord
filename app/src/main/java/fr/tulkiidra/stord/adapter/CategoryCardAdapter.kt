@@ -9,11 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.tulkiidra.stord.CategoryModel
+import fr.tulkiidra.stord.CategoryPopup
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
 
 class CategoryCardAdapter(
-    private val context: MainActivity,
+    val context: MainActivity,
     private val categoryList: List<CategoryModel>,
     private val layoutId: Int
     ) : RecyclerView.Adapter<CategoryCardAdapter.ViewHolder>(){
@@ -46,6 +47,10 @@ class CategoryCardAdapter(
             holder.starIcon?.setImageResource(R.drawable.home)
         } else {
             holder.starIcon?.setImageResource(R.drawable.star)
+        }
+
+        holder.itemView.setOnClickListener{
+            CategoryPopup(this, currentCategory).show()
         }
     }
 
