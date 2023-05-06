@@ -9,11 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.tulkiidra.stord.ItemModel
+import fr.tulkiidra.stord.ItemPopup
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
 
 class ItemCardAdapter (
-    private val context: MainActivity,
+    val context: MainActivity,
     private val itemList: List<ItemModel>,
     private val layoutId: Int
     ) : RecyclerView.Adapter<ItemCardAdapter.ViewHolder>(){
@@ -46,6 +47,11 @@ class ItemCardAdapter (
                 holder.starIcon?.setImageResource(R.drawable.home)
             } else {
                 holder.starIcon?.setImageResource(R.drawable.star)
+            }
+
+            // when item clicked
+            holder.itemView.setOnClickListener{
+                ItemPopup(this, currentItem).show()
             }
         }
 

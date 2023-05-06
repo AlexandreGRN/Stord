@@ -47,6 +47,30 @@ class CategoryFragment(
             imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
             favorite = false
         ))
+        favCategoryList.add(CategoryModel(
+            name = "Immobilier",
+            description = "Possession d'appartement",
+            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
+            favorite = true
+        ))
+        favCategoryList.add(CategoryModel(
+            name = "Immobilier",
+            description = "Possession d'appartement",
+            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
+            favorite = true
+        ))
+        categoryList.add(CategoryModel(
+            name = "Immobilier",
+            description = "Possession d'appartement",
+            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
+            favorite = true
+        ))
+        categoryList.add(CategoryModel(
+            name = "Medical",
+            description = "Pillule en tout genre",
+            imageUrl = "https://cdn.pixabay.com/photo/2016/07/24/21/01/thermometer-1539191_960_720.jpg",
+            favorite = false
+        ))
 
         // Create favorite part
         if (favCategoryList.isEmpty()){

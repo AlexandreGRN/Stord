@@ -28,6 +28,22 @@ class ItemFragment(private val context: MainActivity) : Fragment(){
         val categoryList = arrayListOf<CategoryModel>()
         val itemList = arrayListOf<ItemModel>()
 
+        itemList.add(ItemModel(
+            name = "Clé à molette",
+            description = "Fait des trucs",
+            imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
+            favorite = false))
+        itemList.add(ItemModel(
+            name = "Citroen",
+            description = "C'est beau",
+            imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
+            favorite = false))
+        itemList.add(ItemModel(
+            name = "Trombonne",
+            description = "Je sais pas pourquoi c'est là",
+            imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
+            favorite = false))
+
         if (categoryList.isEmpty() and itemList.isEmpty()){
             return inflater.inflate(R.layout.empty_items_and_subcategories, container, false)
         }
