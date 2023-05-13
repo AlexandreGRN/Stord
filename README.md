@@ -22,3 +22,4 @@ Stord is a Storage Management Application for Android
 |V.0.6.4 |Change item object|
 |V.0.6.5 |Create all buttons in item popup|
 |V.0.6.6 |Create all buttons in category popup|
+|V.0.7.0 |Frame4 added (add_new_item Frame) |
