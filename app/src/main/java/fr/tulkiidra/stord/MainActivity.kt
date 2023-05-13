@@ -3,6 +3,8 @@ package fr.tulkiidra.stord
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import fr.tulkiidra.stord.fragments.AddNewFragment
+import fr.tulkiidra.stord.fragments.CategoryFragment
+import fr.tulkiidra.stord.fragments.FavoriteFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceStrate: Bundle?){
@@ -11,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
         //transaction.replace(R.id.frame_container, CategoryFragment(this))
-        transaction.replace(R.id.frame_container, AddNewFragment())
+        transaction.replace(R.id.frame_container, FavoriteFragment(this))
         transaction.addToBackStack(null)
         transaction.commit()
     }
