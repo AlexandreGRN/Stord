@@ -33,4 +33,14 @@
     <string name="emptyCategory2">You can try to create some using the \'create new\' tab</string>
 
 
+    <!-- Add new page -->
+    <string name="add_new_upload">Upload image</string>
+    <string name="add_new_name">Name</string>
+    <string name="add_new_description">Description</string>
+    <string name="add_new_amount">Amount</string>
+    <string name="add_new_alert">Alert</string>
+    <string name="add_new_button_accept">Create new item</string>
+
+
+
 </resources>

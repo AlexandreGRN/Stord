@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="40dp"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/add_new_button"
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/orange"
+            android:text="@string/add_new_upload"
+            android:textColor="#4E342E" />
+
+        <ImageView
+            android:id="@+id/add_new_button_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/star"
+            android:background="@color/gray"
+            android:contentDescription="@string/ImageDesc" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/add_new_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="@string/add_new_name"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/add_new_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="@string/add_new_description"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/add_new_item_amount"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:hint="@string/add_new_amount"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:inputType="number"
+            android:autofillHints="no" />
+
+        <EditText
+            android:id="@+id/add_new_item_alert"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:hint="@string/add_new_alert"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginStart="50dp"
+            android:autofillHints="no"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/add_new_confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/add_new_button_accept"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/black"
+        tools:ignore="VisualLintButtonSize" />
+</LinearLayout>
