@@ -10,4 +10,6 @@ setup:
 	npm init -y;\
 	apt install -y libpq-dev;\
 	npm install -y mysql;\
-	npm install express
+	npm install -y express
+	npm install -y pg
+	npm install -y cors
