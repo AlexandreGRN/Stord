@@ -26,6 +26,11 @@ connection.connect((err) => {
 });
 
 //ROUTES//
+// Status
+app.get('/api/status', (req, res) => {
+    console.log("\{\"Status\": OK}");
+});
+
 //create a category
 app.post('/api/create/category', (req, res) => {
     try {
