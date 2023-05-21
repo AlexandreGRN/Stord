@@ -23,3 +23,8 @@ Stord is a Storage Management Application for Android
 |V.0.6.5 |Create all buttons in item popup|
 |V.0.6.6 |Create all buttons in category popup|
 |V.0.7.0 |Frame4 added (add_new_item Frame) |
+|V.0.8.0 |Environment setup and makefile creation|
+|V.0.8.1 |SQL tables created|
+|V.0.8.2 |SQL tests objects created|
+|V.0.8.3 |API created for categories|
+|V.0.8.4 |API created for items too|
