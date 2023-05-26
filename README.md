@@ -28,3 +28,5 @@ Stord is a Storage Management Application for Android
 |V.0.8.2 |SQL tests objects created|
 |V.0.8.3 |API created for categories|
 |V.0.8.4 |API created for items too|
+|V.0.9.0 |API Hosted in AWS|
+|V.0.10.0|Database Hosted in AWS|
