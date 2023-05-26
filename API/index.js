@@ -3,7 +3,7 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
-
+const dotenv = require('dotenv').config();
 // Variables & prerequisites
 const app = express();
 app.use(express.json());
@@ -12,10 +12,11 @@ app.use(cors());
 
 // DB connection //
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'stord_test_db'
+    host: process.env.RDS_HOSTNAME,
+    user: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    port: process.env.RDS_PORT,
+    database: process.env.RDS_DB_NAME
 });
 
 connection.connect((err) => {
@@ -30,6 +31,21 @@ connection.connect((err) => {
 // Status
 app.get('/api/status', async (req, res) => {
     console.log("\{\"Status\": OK}");
+});
+// Database check
+app.get('/api/tables', async (req, res) => {
+    var sql = 'SHOW TABLES'
+    try {
+        connection.query(sql, (err, results) =>{
+        if (err) {
+            console.error('Error executing query:', err);
+            return;
+        }
+        console.log('Fetched tables:', results);
+    })
+    } catch (err) {
+        console.log(err.message);
+    }
 });
 
 //CREATE
