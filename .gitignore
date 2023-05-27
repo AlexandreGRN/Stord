@@ -36,3 +36,6 @@ google-services.json
 package-lock.json
 package.json
 node_modules
+API/key.pem
+API/csr.pem
+API/cert.pem

@@ -4,6 +4,9 @@ const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
 const dotenv = require('dotenv').config();
+const https = require("https");
+const fs = require("fs");
+
 // Variables & prerequisites
 const app = express();
 app.use(express.json());
@@ -329,6 +332,16 @@ app.delete('/api/delete/item/:id', async (req, res) => {
 });
 
 // Listen if API is connected
-app.listen(5000, () => {
+https
+  .createServer(
+		// Provide the private and public key to the server by reading each
+		// file's content with the readFileSync() method.
+    {
+      key: fs.readFileSync("key.pem"),
+      cert: fs.readFileSync("cert.pem"),
+    },
+    app
+  )
+  .listen(5000, () => {
     console.log("Server has started on port 5000");
 });
