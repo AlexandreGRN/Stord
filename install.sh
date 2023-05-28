@@ -5,6 +5,7 @@ apt install -y bash
 apt install -y git
 apt install -y mysql-server
 apt install -y libpq-dev
+apt install -y certbot
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 source ~/.bashrc
 nvm install --lts

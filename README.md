@@ -1,7 +1,7 @@
 # Stord
 Stord is a Storage Management Application for Android
 
-
+## Version
 |Version| Summurize|
 |-------|-------|
 |V.0.0.1 | Added initial resources for MVP|
@@ -30,3 +30,28 @@ Stord is a Storage Management Application for Android
 |V.0.8.4 |API created for items too|
 |V.0.9.0 |API Hosted in AWS|
 |V.0.10.0|Database Hosted in AWS|
+
+## How to run
+This repository contain multiple part of the project. The `Stord` folder contains:
+### The API
+The `API` folder contains the source code for the API. To test the API, you need to have Node.js installed in your computer. You can install all the prerequisites by running `make install` in the `Stord` folder, then git clone this repo and run `make setup` in the `Stord` folder. Then, you can run the API by running `node index.js` in the `API` folder. The API will be running on port 80 and will only support HTTPS requests.
+
+The route for the API is `/api/`. The API supports the following requests:
+/api/status
+- `POST /api/create/category`: Creates a new category
+- `POST /api/create/item`: Creates a new item
+- `GET /api/categories/:owner_id`: Returns all the categories from a specific user
+- `GET /api/categories/subcategories/:parent_category_id`: Returns all the subcategories from a specific category###
+- `GET /api/items/:parent_category_id`: Returns all the items from a specific category
+- `GET /api/allitems/:owner_id`: Returns all the items from a specific user
+- `GET /api/category/:owner_id/:id`: Returns a specific category with the given id from a specific user
+- `GET /api/item/:parent_category_id/:id`: Returns a specific item with the given id from a specific category
+- `PUT /api/update/category/:id`: Updates the category with the given id
+- `PUT /api/update/item/:id`: Updates the item with the given id
+- `DELETE /api/delete/category/:id`: Deletes the category with the given id
+- `DELETE /api/delete/item/:id`: Deletes the item with the given id
+
+### The App
+The `App` folder contains the source code for the Android application. To test the application, you need to have Android Studio installed in your computer. You can download Android Studio from [here](https://developer.android.com/studio). After installing Android Studio, you can clone this repository and open it in Android Studio. Then, you can run the application on your phone or on an emulator.
+
+To use the Application you can download the APK (Not available publicly yet)
