@@ -8,6 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import fr.tulkiidra.stord.adapter.ItemCardAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import java.util.concurrent.CompletableFuture
 
 class ItemPopup(private val adapter: ItemCardAdapter, private val item: ItemModel) : Dialog(adapter.context) {
 
@@ -38,8 +48,10 @@ class ItemPopup(private val adapter: ItemCardAdapter, private val item: ItemMode
         favButton.setOnClickListener{
             item.favorite = !item.favorite
             if (item.favorite) {
+                doNetworkCallsInParallelPut(1)
                 favButton.setImageResource(R.drawable.home)
             } else {
+                doNetworkCallsInParallelPut(0)
                 favButton.setImageResource(R.drawable.star)
             }
         }
@@ -53,12 +65,13 @@ class ItemPopup(private val adapter: ItemCardAdapter, private val item: ItemMode
     private  fun setupDeleteButton(){
         findViewById<ImageView>(R.id.popup_supress_item).setOnClickListener{
             dismiss()
+            doNetworkCallsInParallelDelete(item.id)
         }
     }
     private fun setupComponants() {
         // Image
         val itemImage = findViewById<ImageView>(R.id.popup_item_image)
-        Glide.with(adapter.context).load(Uri.parse(item.imageUrl)).into(itemImage)
+        Glide.with(adapter.context).load(Uri.parse(item.imageURL)).into(itemImage)
 
         // Name
         findViewById<TextView>(R.id.popup_item_name).text = item.name
@@ -79,5 +92,51 @@ class ItemPopup(private val adapter: ItemCardAdapter, private val item: ItemMode
         } else {
             favButton.setImageResource(R.drawable.star)
         }
+    }
+    private fun doNetworkCallsInParallelPut(target: Int): ArrayList<ItemModel> {
+        val completableFuture = CompletableFuture<ArrayList<ItemModel>>()
+        CoroutineScope(Dispatchers.IO).launch {
+            val list = async {
+                putRequest(target)
+            }
+            completableFuture.complete(list.await())
+        }
+        return completableFuture.get()
+    }
+
+    private fun doNetworkCallsInParallelDelete(id: Int): ArrayList<ItemModel> {
+        val completableFuture = CompletableFuture<ArrayList<ItemModel>>()
+        CoroutineScope(Dispatchers.IO).launch {
+            val list = async {
+                deleteRequest(id)
+            }
+            completableFuture.complete(list.await())
+        }
+        return completableFuture.get()
+    }
+
+    private fun putRequest(target: Int): ArrayList<ItemModel>{
+        val client = OkHttpClient()
+        val json = "application/json; charset=utf-8".toMediaTypeOrNull()
+        val jsonObject = JSONObject()
+        val url = "https://stord.tech/api/fav/item/$target/" + item.id
+        var body = jsonObject.toString().toRequestBody(json)
+        var newReq = Request.Builder()
+            .url(url)
+            .put(body)
+            .build()
+        val responseBody = client.newCall(newReq).execute().body
+        return ArrayList<ItemModel>()
+    }
+
+    private fun deleteRequest(id: Int): ArrayList<ItemModel>{
+        val client = OkHttpClient()
+        val url = "https://stord.tech/api/delete/item/$id"
+        var newReq = Request.Builder()
+            .url(url)
+            .delete()
+            .build()
+        val responseBody = client.newCall(newReq).execute().body
+        return ArrayList<ItemModel>()
     }
 }
