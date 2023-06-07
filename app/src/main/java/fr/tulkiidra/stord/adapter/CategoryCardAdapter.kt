@@ -37,7 +37,7 @@ class CategoryCardAdapter(
         val currentCategory = categoryList[position]
 
         if (holder.categoryCardImage != null) {
-            Glide.with(context).load(Uri.parse(currentCategory.imageUrl))
+            Glide.with(context).load(Uri.parse(currentCategory.imageURL))
                 .into(holder.categoryCardImage)
         }
         holder.categoryName?.text = currentCategory.name
