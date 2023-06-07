@@ -8,69 +8,35 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import fr.tulkiidra.stord.CategoryModel
+import fr.tulkiidra.stord.ItemModel
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
 import fr.tulkiidra.stord.adapter.CategoryCardAdapter
 import fr.tulkiidra.stord.adapter.CategoryDecoration
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONObject
+import java.util.concurrent.CompletableFuture
+
 
 class CategoryFragment(
-    private val context: MainActivity
+    private val context: MainActivity,
+    private val user_id: Int
 ) : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.category_list, container, false)
 
-        val categoryList = arrayListOf<CategoryModel>()
-        val favCategoryList = arrayListOf<CategoryModel>()
-        favCategoryList.add(CategoryModel(
-            name = "Immobilier",
-            description = "Possession d'appartement",
-            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
-            favorite = true
-        ))
-        categoryList.add(CategoryModel(
-            name = "Immobilier",
-            description = "Possession d'appartement",
-            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
-            favorite = true
-        ))
-        categoryList.add(CategoryModel(
-            name = "Medical",
-            description = "Pillule en tout genre",
-            imageUrl = "https://cdn.pixabay.com/photo/2016/07/24/21/01/thermometer-1539191_960_720.jpg",
-            favorite = false
-        ))
-        categoryList.add(CategoryModel(
-            name = "Garage",
-            description = "Voiture et outils",
-            imageUrl = "https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg",
-            favorite = false
-        ))
-        favCategoryList.add(CategoryModel(
-            name = "Immobilier",
-            description = "Possession d'appartement",
-            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
-            favorite = true
-        ))
-        favCategoryList.add(CategoryModel(
-            name = "Immobilier",
-            description = "Possession d'appartement",
-            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
-            favorite = true
-        ))
-        categoryList.add(CategoryModel(
-            name = "Immobilier",
-            description = "Possession d'appartement",
-            imageUrl = "https://cdn.pixabay.com/photo/2023/04/24/10/16/architecture-7947727_960_720.jpg",
-            favorite = true
-        ))
-        categoryList.add(CategoryModel(
-            name = "Medical",
-            description = "Pillule en tout genre",
-            imageUrl = "https://cdn.pixabay.com/photo/2016/07/24/21/01/thermometer-1539191_960_720.jpg",
-            favorite = false
-        ))
+        val (categoryList, favCategoryList) = doNetworkCallsInParallel(user_id)
 
         // Create favorite part
         if (favCategoryList.isEmpty()){
@@ -95,5 +61,71 @@ class CategoryFragment(
         }
 
         return view
+    }
+
+    private fun doNetworkCallsInParallel(user_id: Int): Pair<ArrayList<CategoryModel>, ArrayList<CategoryModel>> {
+        val completableFuture = CompletableFuture<Pair<ArrayList<CategoryModel>, ArrayList<CategoryModel>>>()
+        CoroutineScope(Dispatchers.IO).launch {
+            val listCategory = async {
+                getRequestCategory(user_id)
+            }
+            val listCategoryFav = async {
+                getRequestCategoryFav(user_id)
+            }
+            val categoryList = listCategory.await()
+            val categoryFavList = listCategoryFav.await()
+            completableFuture.complete(categoryList to categoryFavList)
+        }
+        return completableFuture.get()
+    }
+    private suspend fun getRequestCategory(user_id: Int): ArrayList<CategoryModel> {
+        // Make Request
+        val itemList = arrayListOf<CategoryModel>()
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://stord.tech/api/categories/$user_id")
+            .build()
+        val responseBody = client.newCall(request).execute().body
+        val jsonList = convertJsonToList(responseBody.string())
+        val mapper = jacksonObjectMapper()
+
+        // Fill the lists
+        for (i in jsonList) {
+            val newItem: CategoryModel = mapper.readValue(i.toString())
+            itemList.add(newItem)
+        }
+        return itemList
+    }
+    private suspend fun getRequestCategoryFav(user_id: Int): ArrayList<CategoryModel> {
+        // Make Request
+        val itemList = arrayListOf<CategoryModel>()
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("https://stord.tech/api/favorite/category/$user_id")
+            .build()
+        val responseBody = client.newCall(request).execute().body
+        val jsonList = convertJsonToList(responseBody.string())
+        val mapper = jacksonObjectMapper()
+
+        // Fill the lists
+        for (i in jsonList) {
+            val newItem: CategoryModel = mapper.readValue(i.toString())
+            itemList.add(newItem)
+        }
+        return itemList
+    }
+
+
+    // This function transform a jsonString into a JsonList
+    private fun convertJsonToList(jsonString: String): List<JSONObject> {
+        val jsonArray = JSONArray(jsonString)
+        val jsonList = mutableListOf<JSONObject>()
+
+        for (i in 0 until jsonArray.length()) {
+            val jsonObject = jsonArray.getJSONObject(i)
+            jsonList.add(jsonObject)
+        }
+
+        return jsonList
     }
 }

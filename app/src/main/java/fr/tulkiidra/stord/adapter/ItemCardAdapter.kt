@@ -37,7 +37,7 @@ class ItemCardAdapter (
             val currentItem = itemList[position]
 
             if (holder.itemCardImage != null) {
-                Glide.with(context).load(Uri.parse(currentItem.imageUrl))
+                Glide.with(context).load(Uri.parse(currentItem.imageURL))
                     .into(holder.itemCardImage)
             }
             holder.itemName?.text = currentItem.name
