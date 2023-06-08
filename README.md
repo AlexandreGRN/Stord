@@ -30,6 +30,14 @@ Stord is a Storage Management Application for Android
 |V.0.8.4 |API created for items too|
 |V.0.9.0 |API Hosted in AWS|
 |V.0.10.0|Database Hosted in AWS|
+|V.0.11.0|Added More API route|
+|V.0.11.1|Created the SSL encryption method to encrypt data when doing https requests|
+|V.0.11.2|Enhancing security of the application|
+|V.0.12.0|Changing object models|
+|V.0.12.1|Implement AWS requests for popup|
+|V.0.12.2|Made all API call Asynchronous|
+|V.0.13.0|Navigation Bar added|
+|V.0.13.1|Change access to subcategories via onclick event on a category|
 
 ## How to run
 This repository contain multiple part of the project. The `Stord` folder contains:
