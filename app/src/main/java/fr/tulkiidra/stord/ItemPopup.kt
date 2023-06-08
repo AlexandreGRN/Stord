@@ -19,7 +19,11 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
-class ItemPopup(private val adapter: ItemCardAdapter, private val item: ItemModel) : Dialog(adapter.context) {
+class ItemPopup(
+    private val context : MainActivity,
+    private val adapter: ItemCardAdapter,
+    private val item: ItemModel
+    ) : Dialog(adapter.context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

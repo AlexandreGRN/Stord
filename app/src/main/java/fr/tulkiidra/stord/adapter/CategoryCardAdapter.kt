@@ -12,6 +12,7 @@ import fr.tulkiidra.stord.CategoryModel
 import fr.tulkiidra.stord.CategoryPopup
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
+import fr.tulkiidra.stord.fragments.ItemFragment
 
 class CategoryCardAdapter(
     val context: MainActivity,
@@ -49,8 +50,12 @@ class CategoryCardAdapter(
             holder.starIcon?.setImageResource(R.drawable.star)
         }
 
+        holder.itemView.setOnLongClickListener{
+            CategoryPopup(context = context,this, currentCategory).show()
+            return@setOnLongClickListener true
+        }
         holder.itemView.setOnClickListener{
-            CategoryPopup(this, currentCategory).show()
+            context.makeTransaction(ItemFragment(context, currentCategory.id))
         }
     }
 

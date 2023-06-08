@@ -24,7 +24,11 @@ import org.json.JSONObject
 import java.lang.Exception
 import java.util.concurrent.CompletableFuture
 
-class CategoryPopup(private val adapter: CategoryCardAdapter, private val category: CategoryModel) : Dialog(adapter.context) {
+class CategoryPopup(
+    private val context : MainActivity,
+    private val adapter: CategoryCardAdapter,
+    private val category: CategoryModel
+    ) : Dialog(adapter.context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

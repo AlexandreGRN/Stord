@@ -30,10 +30,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun makeTransaction(fragment: Fragment) {
+    fun makeTransaction(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    fun getContext(): MainActivity {
+        return (this)
     }
 }
