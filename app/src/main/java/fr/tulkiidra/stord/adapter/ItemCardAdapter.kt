@@ -50,8 +50,9 @@ class ItemCardAdapter (
             }
 
             // when item clicked
-            holder.itemView.setOnClickListener{
-                ItemPopup(this, currentItem).show()
+            holder.itemView.setOnLongClickListener{
+                ItemPopup(context = context, this, currentItem).show()
+                return@setOnLongClickListener true
             }
         }
 
