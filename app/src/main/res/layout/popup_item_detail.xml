@@ -33,17 +33,19 @@
         android:text="@string/item"
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        style="@style/Object_name"/>
 
     <ImageView
         android:id="@+id/popup_close_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/home"
+        android:src="@drawable/close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/ImageDesc"/>
 
     <TextView
         android:id="@+id/textView"
@@ -51,34 +53,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="Description :"
+        android:text="@string/popup_description"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_item_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:text="Blablabla"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Remaining:"
+        android:text="@string/popup_remaining"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/popup_item_description" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_item_description"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_item_remaining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[ ]"
         android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -88,16 +91,17 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alert:"
+        android:text="@string/popup_alert"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_item_alert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="[ ]"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5" />
@@ -107,15 +111,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Remove: "
+        android:text="@string/popup_remove"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_item_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[ ]"
         android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -125,17 +129,17 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add: "
+        android:text="@string/popup_add"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_item_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[ ]"
         android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -145,22 +149,24 @@
         android:id="@+id/popup_supress_item"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/home"
+        android:src="@drawable/bin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/ImageDesc"/>
 
     <ImageView
         android:id="@+id/popup_favorite_item"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/home"
+        android:src="@drawable/unfav_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/ImageDesc"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

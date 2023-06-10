@@ -79,7 +79,7 @@ class ItemFragment(private val context: MainActivity, private val category_id: I
         }
         return completableFuture.get()
     }
-    private suspend fun getRequestCategory(category_id: Int): ArrayList<CategoryModel> {
+    private fun getRequestCategory(category_id: Int): ArrayList<CategoryModel> {
         // Make Request
         val itemList = arrayListOf<CategoryModel>()
         val client = OkHttpClient()
@@ -97,7 +97,7 @@ class ItemFragment(private val context: MainActivity, private val category_id: I
         }
         return itemList
     }
-    private suspend fun getRequestItem(category_id: Int): ArrayList<ItemModel> {
+    private fun getRequestItem(category_id: Int): ArrayList<ItemModel> {
         // Make Request
         val itemList = arrayListOf<ItemModel>()
         val client = OkHttpClient()

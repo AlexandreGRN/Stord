@@ -12,7 +12,8 @@
         android:layout_centerVertical="true"
         android:text="@string/emptyItem1"
         android:padding="10dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/Default_title"/>
 
     <TextView
         android:id="@+id/xpoiu"
@@ -21,5 +22,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="@string/emptyItem2"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/Default_text"/>
 </RelativeLayout>

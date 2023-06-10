@@ -17,12 +17,13 @@
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/orange"
+        android:background="@drawable/shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        app:itemTextColor="@drawable/bottom_nav_color"
-        app:itemIconTint="@drawable/bottom_nav_color"
-        android:theme="@style/BottomNavigationBar"/>
+        app:itemTextColor="@drawable/text_color_selector"
+        app:itemIconTint="@drawable/text_color_selector"
+        android:theme="@style/BottomNavigationBar"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

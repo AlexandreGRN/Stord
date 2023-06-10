@@ -1,5 +1,6 @@
 package fr.tulkiidra.stord.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import fr.tulkiidra.stord.CategoryModel
-import fr.tulkiidra.stord.ItemModel
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
 import fr.tulkiidra.stord.adapter.CategoryCardAdapter
@@ -19,7 +20,6 @@ import fr.tulkiidra.stord.adapter.CategoryDecoration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -78,7 +78,7 @@ class CategoryFragment(
         }
         return completableFuture.get()
     }
-    private suspend fun getRequestCategory(user_id: Int): ArrayList<CategoryModel> {
+    private fun getRequestCategory(user_id: Int): ArrayList<CategoryModel> {
         // Make Request
         val itemList = arrayListOf<CategoryModel>()
         val client = OkHttpClient()
@@ -96,7 +96,7 @@ class CategoryFragment(
         }
         return itemList
     }
-    private suspend fun getRequestCategoryFav(user_id: Int): ArrayList<CategoryModel> {
+    private fun getRequestCategoryFav(user_id: Int): ArrayList<CategoryModel> {
         // Make Request
         val itemList = arrayListOf<CategoryModel>()
         val client = OkHttpClient()

@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/add_new" />
+            android:src="@drawable/add_new"
+            android:contentDescription="@string/ImageDesc"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -33,17 +34,19 @@
         android:text="@string/category"
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        style="@style/Object_name"/>
 
     <ImageView
         android:id="@+id/popup_close_category"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/home"
+        android:src="@drawable/close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/ImageDesc"/>
 
     <TextView
         android:id="@+id/textView"
@@ -51,39 +54,43 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="Description :"
+        android:text="@string/popup_description"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        style="@style/Object_text"/>
 
     <TextView
         android:id="@+id/popup_category_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="125dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:text="Blablabla"
+        android:text="@string/description"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        style="@style/Object_text"/>
 
     <ImageView
         android:id="@+id/popup_supress_category"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/home"
+        android:src="@drawable/bin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="50dp"
+        android:contentDescription="@string/ImageDesc"/>
 
     <ImageView
         android:id="@+id/popup_favorite_category"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/home"
+        android:src="@drawable/unfav_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="50dp"
+        android:contentDescription="@string/ImageDesc"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

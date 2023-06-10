@@ -20,10 +20,9 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 class ItemPopup(
-    private val context : MainActivity,
     private val adapter: ItemCardAdapter,
     private val item: ItemModel
-    ) : Dialog(adapter.context) {
+) : Dialog(adapter.context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +52,10 @@ class ItemPopup(
             item.favorite = !item.favorite
             if (item.favorite) {
                 doNetworkCallsInParallelPut(1)
-                favButton.setImageResource(R.drawable.home)
+                favButton.setImageResource(R.drawable.fav_star)
             } else {
                 doNetworkCallsInParallelPut(0)
-                favButton.setImageResource(R.drawable.star)
+                favButton.setImageResource(R.drawable.unfav_star)
             }
         }
     }
@@ -92,12 +91,12 @@ class ItemPopup(
         // Favorite Logo
         val favButton = findViewById<ImageView>(R.id.popup_favorite_item)
         if (item.favorite) {
-            favButton.setImageResource(R.drawable.home)
+            favButton.setImageResource(R.drawable.fav_star)
         } else {
-            favButton.setImageResource(R.drawable.star)
+            favButton.setImageResource(R.drawable.unfav_star)
         }
     }
-    private fun doNetworkCallsInParallelPut(target: Int): ArrayList<ItemModel> {
+    fun doNetworkCallsInParallelPut(target: Int): ArrayList<ItemModel> {
         val completableFuture = CompletableFuture<ArrayList<ItemModel>>()
         CoroutineScope(Dispatchers.IO).launch {
             val list = async {
@@ -124,23 +123,23 @@ class ItemPopup(
         val json = "application/json; charset=utf-8".toMediaTypeOrNull()
         val jsonObject = JSONObject()
         val url = "https://stord.tech/api/fav/item/$target/" + item.id
-        var body = jsonObject.toString().toRequestBody(json)
-        var newReq = Request.Builder()
+        val body = jsonObject.toString().toRequestBody(json)
+        val newReq = Request.Builder()
             .url(url)
             .put(body)
             .build()
-        val responseBody = client.newCall(newReq).execute().body
-        return ArrayList<ItemModel>()
+        client.newCall(newReq).execute().body
+        return ArrayList()
     }
 
     private fun deleteRequest(id: Int): ArrayList<ItemModel>{
         val client = OkHttpClient()
         val url = "https://stord.tech/api/delete/item/$id"
-        var newReq = Request.Builder()
+        val newReq = Request.Builder()
             .url(url)
             .delete()
             .build()
-        val responseBody = client.newCall(newReq).execute().body
-        return ArrayList<ItemModel>()
+        client.newCall(newReq).execute().body
+        return ArrayList()
     }
 }
