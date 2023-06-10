@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="40dp"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/add_new_button"
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@null"
+            android:background="@drawable/rectangle_button_add_new"
+            style="@style/Default_text_white"
+            android:text="@string/add_new_upload" />
+
+        <ImageView
+            android:id="@+id/add_new_button_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/add_new"
+            android:background="@color/gray"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/ImageDesc" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/add_new_item_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="@string/add_new_name"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        tools:ignore="VisualLintTextFieldSize"/>
+
+    <EditText
+        android:id="@+id/add_new_item_description_input"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="@string/add_new_description"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="no"
+        android:inputType="text"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <Spinner
+        android:id="@+id/spinner_category_input"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:entries="@array/add_new_array"/>
+
+    <Button
+        android:id="@+id/add_new_confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="@string/add_new_button_accept"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/black"
+        tools:ignore="VisualLintButtonSize" />
+</LinearLayout>
