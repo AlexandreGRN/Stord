@@ -5,7 +5,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import fr.tulkiidra.stord.fragments.AddNewFragment
+import fr.tulkiidra.stord.fragments.AddNewCategoryFragment
+import fr.tulkiidra.stord.fragments.AddNewItemFragment
 import fr.tulkiidra.stord.fragments.CategoryFragment
 import fr.tulkiidra.stord.fragments.FavoriteFragment
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceStrate)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         makeTransaction(CategoryFragment(this, 1))
 
         // nav bar
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.add_new_page -> {
                     Toast.makeText(this, "Add New", Toast.LENGTH_LONG).show()
-                    makeTransaction(fragment = AddNewFragment())
+                    makeTransaction(fragment = AddNewCategoryFragment(this, 1))
                 }
                 else -> {
 
@@ -49,8 +50,8 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    public override fun onSupportNavigateUp(): Boolean {
-        onBackPressed();
-        return true;
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
