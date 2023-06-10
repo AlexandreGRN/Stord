@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="@string/categories"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="15dp"
+        style="@style/Default_title"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subcategoryRecyclerView"
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:text="@string/items"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="15dp"
+        style="@style/Default_title"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemRecyclerView"

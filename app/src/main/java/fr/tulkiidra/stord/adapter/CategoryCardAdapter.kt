@@ -1,5 +1,6 @@
 package fr.tulkiidra.stord.adapter
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -34,28 +35,53 @@ class CategoryCardAdapter(
         return ViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentCategory = categoryList[position]
 
-        if (holder.categoryCardImage != null) {
+        // Image
+        holder.categoryCardImage?.let {
             Glide.with(context).load(Uri.parse(currentCategory.imageURL))
-                .into(holder.categoryCardImage)
+                .into(it)
         }
-        holder.categoryName?.text = currentCategory.name
-        holder.categoryDescription?.text = currentCategory.description
+
+        // Name
+        try {
+            holder.categoryName?.text = currentCategory.name
+        } catch (e: Exception){
+            holder.categoryName?.text = "Unknown"
+        }
+
+        // Description
+        try {
+            holder.categoryDescription?.text = currentCategory.description
+        } catch (e: Exception){
+            holder.categoryDescription?.text = "Unknown"
+        }
+
 
         if (currentCategory.favorite) {
-            holder.starIcon?.setImageResource(R.drawable.home)
+            holder.starIcon?.setImageResource(R.drawable.fav_star)
         } else {
-            holder.starIcon?.setImageResource(R.drawable.star)
+            holder.starIcon?.setImageResource(R.drawable.unfav_star)
         }
 
         holder.itemView.setOnLongClickListener{
-            CategoryPopup(context = context,this, currentCategory).show()
+            CategoryPopup(this, currentCategory).show()
             return@setOnLongClickListener true
         }
         holder.itemView.setOnClickListener{
             context.makeTransaction(ItemFragment(context, currentCategory.id))
+        }
+
+        holder.starIcon?.setOnClickListener {
+            if (currentCategory.favorite){
+                holder.starIcon?.setImageResource(R.drawable.unfav_star)
+                CategoryPopup(this, currentCategory).doNetworkCallsInParallelPut(0)
+            } else {
+                holder.starIcon?.setImageResource(R.drawable.fav_star)
+                CategoryPopup(this, currentCategory).doNetworkCallsInParallelPut(1)
+            }
         }
     }
 

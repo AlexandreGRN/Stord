@@ -1,7 +1,6 @@
 package fr.tulkiidra.stord.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +16,7 @@ import fr.tulkiidra.stord.adapter.ItemCardAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
@@ -77,7 +74,7 @@ class FavoriteFragment(
     }
 
     // This function transform a jsonString into a JsonList
-    private suspend fun convertJsonToList(jsonString: String): List<JSONObject> {
+    private fun convertJsonToList(jsonString: String): List<JSONObject> {
         val jsonArray = JSONArray(jsonString)
         val jsonList = mutableListOf<JSONObject>()
 

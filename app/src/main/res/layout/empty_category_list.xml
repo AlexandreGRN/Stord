@@ -12,7 +12,8 @@
         android:padding="10dp"
         android:text="@string/emptyCategory1"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/Default_title"/>
 
     <TextView
         android:id="@+id/iduuxu"
@@ -22,6 +23,7 @@
         android:layout_centerVertical="true"
         android:text="@string/emptyCategory2"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/Default_text"/>
 
 </RelativeLayout>

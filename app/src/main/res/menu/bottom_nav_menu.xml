@@ -3,7 +3,7 @@
     <item
         android:id="@+id/favorite_page"
         android:title="@string/favorite"
-        android:icon="@drawable/star"/>
+        android:icon="@drawable/unfav_star"/>
 
     <item
         android:id="@+id/categories_page"
@@ -14,5 +14,6 @@
         android:id="@+id/add_new_page"
         android:title="@string/add_new"
         android:icon="@drawable/add_new"/>
+    
 
 </menu>
