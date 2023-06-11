@@ -54,7 +54,7 @@ class FavoriteFragment(
         return completableFuture.get()
     }
 
-    private suspend fun getRequest(user_id: Int): ArrayList<ItemModel> {
+    private fun getRequest(user_id: Int): ArrayList<ItemModel> {
         // Make Request
         val itemList = arrayListOf<ItemModel>()
         val client = OkHttpClient()

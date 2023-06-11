@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import fr.tulkiidra.stord.CategoryPopup
 import fr.tulkiidra.stord.ItemModel
 import fr.tulkiidra.stord.ItemPopup
 import fr.tulkiidra.stord.MainActivity

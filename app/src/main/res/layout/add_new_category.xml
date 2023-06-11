@@ -54,34 +54,6 @@
         android:inputType="text"
         tools:ignore="VisualLintTextFieldSize" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp">
-
-        <EditText
-            android:id="@+id/add_new_item_amount_input"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:hint="@string/add_new_amount"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:inputType="number"
-            android:autofillHints="no" />
-
-        <EditText
-            android:id="@+id/add_new_item_alert_input"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:hint="@string/add_new_alert"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:layout_marginStart="50dp"
-            android:autofillHints="no"
-            android:inputType="number" />
-
-    </LinearLayout>
-
     <Spinner
         android:id="@+id/spinner_category_input"
         android:layout_width="match_parent"
