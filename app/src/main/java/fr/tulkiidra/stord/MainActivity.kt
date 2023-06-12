@@ -1,12 +1,13 @@
 package fr.tulkiidra.stord
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import fr.tulkiidra.stord.fragments.AddNewCategoryFragment
-import fr.tulkiidra.stord.fragments.AddNewItemFragment
+import fr.tulkiidra.stord.fragments.AuthLoginFragment
 import fr.tulkiidra.stord.fragments.CategoryFragment
 import fr.tulkiidra.stord.fragments.FavoriteFragment
 
@@ -17,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        makeTransaction(CategoryFragment(this, 1))
+        makeTransaction(AuthLoginFragment(this))
 
         // nav bar
         val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
+        navigationBarView.visibility = View.GONE
         navigationBarView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.favorite_page -> {
@@ -48,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.frame_container, fragment)
         transaction.addToBackStack("new")
         transaction.commit()
+    }
+
+    fun visibleNavBar(){
+        val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
+        navigationBarView.visibility = View.VISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {
