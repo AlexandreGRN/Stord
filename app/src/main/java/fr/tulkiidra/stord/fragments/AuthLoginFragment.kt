@@ -21,14 +21,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
+import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 class AuthLoginFragment(
     private val context : MainActivity
 ) : Fragment() {
+    private var body = mutableMapOf<String, String>()
     private var passwordShowing = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -54,7 +58,15 @@ class AuthLoginFragment(
             passwordET.setSelection(passwordET.length())
         }
 
-        signInButton.setOnClickListener {  }
+        signInButton.setOnClickListener {
+            body["username"] = usernameET.text.toString()
+            body["password"] = passwordET.text.toString()
+            doLoginRequest()
+            if (context.userId != 0){
+                context.makeTransaction(CategoryFragment(context))
+                context.visibleNavBar()
+            }
+        }
 
         signInGoogleBtn.setOnClickListener {  }
 
@@ -64,28 +76,30 @@ class AuthLoginFragment(
         return view
     }
 
-    private fun doLoginRequest(user_id: Int): Int {
+    private fun doLoginRequest(): Int {
         val completableFuture = CompletableFuture<Int>()
         CoroutineScope(Dispatchers.IO).launch {
             val item = async {
-                getRequest(user_id)
+                getRequest()
             }
             completableFuture.complete(item.await())
         }
         return completableFuture.get()
     }
 
-    private fun getRequest(user_id: Int): Int {
+    private fun getRequest(): Int {
         // Make Request
-        val itemList = arrayListOf<ItemModel>()
         val client = OkHttpClient()
+        val json = "application/json; charset=utf-8".toMediaTypeOrNull()
+        val jsonObject = JSONObject()
+        jsonObject.put("username", body["username"])
+        jsonObject.put("password", body["password"])
+        val bodyJ = jsonObject.toString().toRequestBody(json)
         val request = Request.Builder()
-            .url("https://stord.tech/api/register")
+            .url("https://stord.tech/api/login")
+            .post(bodyJ)
             .build()
         val responseBody = client.newCall(request).execute().body
-        val jsonItem = JSONArray(responseBody)
-        Log.d("HTTPLogin", responseBody.toString())
-        Log.d("HTTPLogin", jsonItem.toString())
-        return 0
+        return responseBody.string().replace("{\"id\":", "").replace("}", "").toInt()
     }
 }

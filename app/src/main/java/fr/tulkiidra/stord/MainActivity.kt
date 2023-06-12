@@ -13,6 +13,8 @@ import fr.tulkiidra.stord.fragments.FavoriteFragment
 
 
 class MainActivity : AppCompatActivity() {
+    var userId: Int = 1
+
     override fun onCreate(savedInstanceStrate: Bundle?){
         super.onCreate(savedInstanceStrate)
         setContentView(R.layout.activity_main)
@@ -27,15 +29,15 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.favorite_page -> {
                     Toast.makeText(this, "Favorites", Toast.LENGTH_LONG).show()
-                    makeTransaction(fragment = FavoriteFragment(this, 1))
+                    makeTransaction(fragment = FavoriteFragment(this))
                 }
                 R.id.categories_page -> {
                     Toast.makeText(this, "Categories", Toast.LENGTH_LONG).show()
-                    makeTransaction(fragment = CategoryFragment(this, 1))
+                    makeTransaction(fragment = CategoryFragment(this))
                 }
                 R.id.add_new_page -> {
                     Toast.makeText(this, "Add New", Toast.LENGTH_LONG).show()
-                    makeTransaction(fragment = AddNewCategoryFragment(this, 1))
+                    makeTransaction(fragment = AddNewCategoryFragment(this))
                 }
                 else -> {
 
