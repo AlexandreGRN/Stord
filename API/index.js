@@ -220,6 +220,35 @@ app.get('/api/item/:parent_category_id/:id', async (req, res) => {
     });
 });
 
+//GET FAV
+//category
+app.get('/api/favorite/category/:owner_id/', async (req, res) => {
+    var id = req.params.id
+    var owner_id = req.params.owner_id
+    const sql = `SELECT * FROM categories WHERE favorite = 1 AND owner_id = ${owner_id}`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+//item
+app.get('/api/favorite/item/:owner_id/', async (req, res) => {
+    var id = req.params.id
+    var owner_id = req.params.owner_id
+    var sql = `SELECT items.id, items.name, items.description, items.remaining, items.alert, items.imageURL, items.favorite, items.parent_category_id FROM items JOIN categories ON items.parent_category_id = categories.id WHERE categories.owner_id = ${owner_id} AND items.favorite = 1`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+
 //UPDATE
 //category
 app.put('/api/update/category/:id', async (req, res) => {
@@ -296,6 +325,36 @@ app.put('/api/update/item/:id', async (req, res) => {
     });
 });
 
+//Fav/unfav
+//category
+app.put('/api/fav/category/:favtarget/:id', async (req, res) => {
+    var id = req.params.id
+    var favtarget = req.params.favtarget
+    var sql = `UPDATE categories SET favorite = ${favtarget} WHERE id = ${id}`
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json({ Status: 'OK' });
+    });
+});
+
+//item
+app.put('/api/fav/item/:favtarget/:id', async (req, res) => {
+    var id = req.params.id
+    var favtarget = req.params.favtarget
+    var sql = `UPDATE items SET favorite = ${favtarget} WHERE id = ${id}`
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json({ Status: 'OK' });
+    });
+});
+
+
 //DELETE
 //category
 app.delete('/api/delete/category/:id', async (req, res) => {
@@ -347,7 +406,7 @@ if (process.env.TEST_API == "true") {
 
 // LOGIN
 
-app.get('/api/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     jsonLogin = JSON.parse(JSON.stringify(req.body))
     const sql = `SELECT * FROM users WHERE username = '${jsonLogin.username}' AND password = '${jsonLogin.password}'`;
     connection.query(sql, (err, results) => {
@@ -356,10 +415,10 @@ app.get('/api/login', async (req, res) => {
             return;
         }
         if (results.length == 0){
-            res.json({ Status: 'Empty' });
+            res.json({ Status: 'Wrong Infos'});
             return;
         }
-        res.json(results);
+       	res.json({ id: results[0].id});
     });
 });
 
@@ -383,20 +442,20 @@ app.post('/api/register', async (req, res) => {
         if (results.length == 0){
             var sql = 'INSERT INTO users(username, password, email) VALUES '
             sql = sql + `('${jsonRegister.username}', '${jsonRegister.password}', '${jsonRegister.email}')`
-            connection.query(sql, (err, results) =>{
-            if (err) {
-                res.json({ Status: err });
-                return;
-            }
-            res.json({ Status: 'OK' });
+            connection.query(sql, (err, result) =>{
+            	if (err) {
+                	res.json({ Status: err });
+                	return;
+            	}
+	    	res.json({ id: result.insertId});
             })
         } else {
-            res.json({ Status: 'username already used' });
+            res.json({ Status: 'Username already used' });
             return;
         }
         })
     } else {
-        res.json({ Status: 'email already used' });
+        res.json({ Status: 'Email already used' });
         return;
     }})
 });
