@@ -41,7 +41,6 @@ import java.util.concurrent.CompletableFuture
 
 class AddNewItemFragment(
     private val context : MainActivity,
-    private val user_id : Int
 ) : Fragment() {
     private var file:Uri? = null
     private var fileLink = arrayListOf<String>()
@@ -59,7 +58,7 @@ class AddNewItemFragment(
         val imageItem = view.findViewById<ImageView>(R.id.add_new_button_image)
         val confirmButton = view.findViewById<Button>(R.id.add_new_confirm_button)
         val spinner = view.findViewById<Spinner>(R.id.spinner_category_input)
-        arrayList1 = doNetworkCallsInParallel(user_id)
+        arrayList1 = doNetworkCallsInParallel(context.usID)
 
         for (d in arrayList1){
             arrayList.add(d.name)
@@ -106,9 +105,11 @@ class AddNewItemFragment(
             if (body["remaining"] == ""){ body["remaining"] = "0" }
             if (body["alert"] == ""){ body["alert"] = "0" }
             doNetworkCallsInParallelPut()
-        } catch (e: Exception){throw e}
-        context.makeTransaction(fragment = AddNewItemFragment(context, user_id))
-        Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
+        } catch (e: Exception){
+            Toast.makeText(context,"Error", Toast.LENGTH_LONG).show()
+        }
+        context.makeTransaction(fragment = AddNewItemFragment(context))
     }
 
 
@@ -156,7 +157,6 @@ class AddNewItemFragment(
         jsonObject.put("parent_category_id", body["categoryParent"])
         val url = "https://stord.tech/api/create/item"
         val bodyJ = jsonObject.toString().toRequestBody(json)
-        Log.d("Intent", jsonObject.toString())
         val newReq = Request.Builder()
             .url(url)
             .post(bodyJ)

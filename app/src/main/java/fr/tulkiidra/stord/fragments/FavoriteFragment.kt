@@ -25,11 +25,10 @@ import java.util.concurrent.CompletableFuture
 
 class FavoriteFragment(
     private val context: MainActivity,
-    private val user_id: Int
 ) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val itemList = doNetworkCallsInParallel(user_id)
+        val itemList = doNetworkCallsInParallel(context.usID)
 
         if (itemList.isEmpty()) {
             return inflater.inflate(R.layout.empty_favorite_item, container, false)

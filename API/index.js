@@ -343,3 +343,60 @@ if (process.env.TEST_API == "true") {
         console.log("Server has started on port ", port);
     })
 };
+
+
+// LOGIN
+
+app.get('/api/login', async (req, res) => {
+    jsonLogin = JSON.parse(JSON.stringify(req.body))
+    const sql = `SELECT * FROM users WHERE username = '${jsonLogin.username}' AND password = '${jsonLogin.password}'`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        if (results.length == 0){
+            res.json({ Status: 'Empty' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+// REGISTER
+app.post('/api/register', async (req, res) => {
+    jsonRegister = JSON.parse(JSON.stringify(req.body))
+
+    var sql_email_test = `SELECT * FROM users WHERE email = '${jsonRegister.email}'`
+    connection.query(sql_email_test, (err, results) =>{
+    if (err) {
+        res.json({ Status: 'Error' });
+        return;
+    }
+    if (results.length == 0){
+        var sql_username_test = `SELECT * FROM users WHERE username = '${jsonRegister.username}'`
+        connection.query(sql_username_test, (err, results) =>{
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        if (results.length == 0){
+            var sql = 'INSERT INTO users(username, password, email) VALUES '
+            sql = sql + `('${jsonRegister.username}', '${jsonRegister.password}', '${jsonRegister.email}')`
+            connection.query(sql, (err, results) =>{
+            if (err) {
+                res.json({ Status: err });
+                return;
+            }
+            res.json({ Status: 'OK' });
+            })
+        } else {
+            res.json({ Status: 'username already used' });
+            return;
+        }
+        })
+    } else {
+        res.json({ Status: 'email already used' });
+        return;
+    }})
+});

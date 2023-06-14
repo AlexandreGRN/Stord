@@ -28,13 +28,12 @@ import java.util.concurrent.CompletableFuture
 
 class CategoryFragment(
     private val context: MainActivity,
-    private val user_id: Int
 ) : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.category_list, container, false)
 
-        val (categoryList, favCategoryList) = doNetworkCallsInParallel(user_id)
+        val (categoryList, favCategoryList) = doNetworkCallsInParallel(context.usID)
 
         // Create favorite part
         if (favCategoryList.isEmpty()){

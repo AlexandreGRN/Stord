@@ -41,13 +41,13 @@ import java.util.concurrent.CompletableFuture
 
 class AddNewCategoryFragment(
     private val context : MainActivity,
-    private val user_id : Int
 ) : Fragment() {
     private var file:Uri? = null
+    private val id = context.usID
     private var fileLink = arrayListOf<String>()
     private var arrayList = arrayListOf<String>()
     private var arrayList1 = arrayListOf<CategoryModel>()
-    private val body = mutableMapOf<String, Any>("name" to "Undefined", "description" to "Undefined", "imageURL" to "Undefined", "favorite" to 0, "owner_id" to "$user_id", "categoryParent" to 0)
+    private val body = mutableMapOf<String, Any>("name" to "Undefined", "description" to "Undefined", "imageURL" to "Undefined", "favorite" to 0, "owner_id" to "$id", "categoryParent" to 0)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,7 +59,7 @@ class AddNewCategoryFragment(
         val imageItem = view.findViewById<ImageView>(R.id.add_new_button_image)
         val confirmButton = view.findViewById<Button>(R.id.add_new_confirm_button)
         val spinner = view.findViewById<Spinner>(R.id.spinner_category_input)
-        arrayList1 = doNetworkCallsInParallel(user_id)
+        arrayList1 = doNetworkCallsInParallel(context.usID)
         arrayList.add("No Parent")
         for (d in arrayList1){
             arrayList.add(d.name)
@@ -106,9 +106,10 @@ class AddNewCategoryFragment(
                 }
             }
             doNetworkCallsInParallelPut()
+            Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
         } catch (e: Exception){throw e}
-        context.makeTransaction(fragment = AddNewCategoryFragment(context, user_id))
-        Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
+        context.makeTransaction(fragment = AddNewCategoryFragment(context))
+
     }
 
 
@@ -155,12 +156,13 @@ class AddNewCategoryFragment(
         jsonObject.put("owner_id", body["owner_id"])
         val url = "https://stord.tech/api/create/category"
         val bodyJ = jsonObject.toString().toRequestBody(json)
-        Log.d("Intent", jsonObject.toString())
+        Log.d("httpd", jsonObject.toString())
         val newReq = Request.Builder()
             .url(url)
             .post(bodyJ)
             .build()
-        client.newCall(newReq).execute().body
+        val response = client.newCall(newReq).execute().body
+        Log.d("httpd", response.string())
         return ArrayList()
     }
 
