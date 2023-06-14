@@ -60,5 +60,6 @@
         <item> Category 8 </item>
         <item> Category 9 </item>
     </string-array>
+    <string name="title_activity_login">Login</string>
 
 </resources>

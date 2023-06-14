@@ -58,7 +58,7 @@ class AddNewItemFragment(
         val imageItem = view.findViewById<ImageView>(R.id.add_new_button_image)
         val confirmButton = view.findViewById<Button>(R.id.add_new_confirm_button)
         val spinner = view.findViewById<Spinner>(R.id.spinner_category_input)
-        arrayList1 = doNetworkCallsInParallel(context.userId)
+        arrayList1 = doNetworkCallsInParallel(context.usID)
 
         for (d in arrayList1){
             arrayList.add(d.name)
@@ -105,9 +105,11 @@ class AddNewItemFragment(
             if (body["remaining"] == ""){ body["remaining"] = "0" }
             if (body["alert"] == ""){ body["alert"] = "0" }
             doNetworkCallsInParallelPut()
-        } catch (e: Exception){throw e}
+            Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
+        } catch (e: Exception){
+            Toast.makeText(context,"Error", Toast.LENGTH_LONG).show()
+        }
         context.makeTransaction(fragment = AddNewItemFragment(context))
-        Toast.makeText(context,"Created", Toast.LENGTH_LONG).show()
     }
 
 
@@ -155,7 +157,6 @@ class AddNewItemFragment(
         jsonObject.put("parent_category_id", body["categoryParent"])
         val url = "https://stord.tech/api/create/item"
         val bodyJ = jsonObject.toString().toRequestBody(json)
-        Log.d("Intent", jsonObject.toString())
         val newReq = Request.Builder()
             .url(url)
             .post(bodyJ)

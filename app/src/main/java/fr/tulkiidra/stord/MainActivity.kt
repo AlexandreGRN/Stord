@@ -1,30 +1,31 @@
 package fr.tulkiidra.stord
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import fr.tulkiidra.stord.fragments.AddNewCategoryFragment
-import fr.tulkiidra.stord.fragments.AuthLoginFragment
+import fr.tulkiidra.stord.fragments.AddNewItemFragment
 import fr.tulkiidra.stord.fragments.CategoryFragment
 import fr.tulkiidra.stord.fragments.FavoriteFragment
 
 
-class MainActivity : AppCompatActivity() {
-    var userId: Int = 1
+class MainActivity() : AppCompatActivity() {
 
+    public var usID  : Int = 0
     override fun onCreate(savedInstanceStrate: Bundle?){
         super.onCreate(savedInstanceStrate)
         setContentView(R.layout.activity_main)
+        makeTransaction(CategoryFragment(this))
 
+        this.usID = intent.getIntExtra("userId", 0)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        makeTransaction(AuthLoginFragment(this))
 
         // nav bar
         val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
-        navigationBarView.visibility = View.GONE
         navigationBarView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.favorite_page -> {

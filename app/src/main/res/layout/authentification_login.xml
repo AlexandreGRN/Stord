@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Sign in"
+        android:text="Sign In"
         style="@style/Sign_In_title"
         android:textColor="@color/black"/>
 
@@ -67,19 +67,36 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="10dp"
-            android:src="@drawable/close"/>
+            android:src="@drawable/invisible"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/forgotPasswordButton"
-        style="@style/Default_text"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Forgot password ?" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp">
 
+        <TextView
+            android:id="@+id/errorTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="start"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/red"
+            />
+
+        <TextView
+            android:id="@+id/forgotPasswordButton"
+            style="@style/Default_text"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:text="Forgot password ?"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signInButton"
         android:layout_width="match_parent"
@@ -90,7 +107,8 @@
         android:textAllCaps="false"
         android:layout_marginTop="40dp"
         android:background="@drawable/round_back_sign_in"
-        style="@style/Default_title"/>
+        style="@style/Default_title"
+        android:textColor="@color/white"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -130,25 +148,18 @@
         android:id="@+id/signInWithGoogle"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@drawable/round_back_sign_in"
+        android:background="@drawable/round_back_sign_in_2"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/google_icon"/>
 
         <TextView
             style="@style/Default_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Sign in with Google" />
+            android:text="Create an account instead"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <LinearLayout
@@ -168,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
-            android:text="Sign up"
+            android:text="Sign Up"
             android:textColor="@color/signInBlue" />
     </LinearLayout>
 </LinearLayout>

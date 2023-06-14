@@ -11,10 +11,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
-import fr.tulkiidra.stord.ItemModel
+import fr.tulkiidra.stord.Login
 import fr.tulkiidra.stord.MainActivity
 import fr.tulkiidra.stord.R
 import kotlinx.coroutines.CoroutineScope
@@ -25,34 +24,35 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
 import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 class AuthLoginFragment(
-    private val context : MainActivity
+    private val context: Login
 ) : Fragment() {
     private var body = mutableMapOf<String, String>()
     private var passwordShowing = false
+    private var userId :Int = 0
+    private lateinit var view : View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.authentification_login, container, false)
+        view = inflater.inflate(R.layout.authentification_login, container, false)
 
         val usernameET = view.findViewById<EditText>(R.id.username)
         val passwordET = view.findViewById<EditText>(R.id.password)
         val signInButton = view.findViewById<Button>(R.id.signInButton)
         val passwordIcon = view.findViewById<ImageView>(R.id.passwordIcon)
-        val signInGoogleBtn = view.findViewById<RelativeLayout>(R.id.signInWithGoogle)
+        val signInButtonSwitch = view.findViewById<RelativeLayout>(R.id.signInWithGoogle)
         val signUpBtn = view.findViewById<TextView>(R.id.signUp)
 
         passwordIcon.setOnClickListener {
 
             if (passwordShowing) {
                 passwordET.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                passwordIcon.setImageResource(R.drawable.show)
+                passwordIcon.setImageResource(R.drawable.invisible)
             } else {
                 passwordET.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                passwordIcon.setImageResource(R.drawable.invisible)
+                passwordIcon.setImageResource(R.drawable.show)
             }
             passwordShowing = !passwordShowing
             passwordET.setSelection(passwordET.length())
@@ -61,14 +61,15 @@ class AuthLoginFragment(
         signInButton.setOnClickListener {
             body["username"] = usernameET.text.toString()
             body["password"] = passwordET.text.toString()
-            doLoginRequest()
-            if (context.userId != 0){
-                context.makeTransaction(CategoryFragment(context))
-                context.visibleNavBar()
+            this.userId = doLoginRequest()
+            if (this.userId == -1){
+                view.findViewById<TextView>(R.id.errorTxt).text = "Wrong Username or Password"
+            } else if (this.userId != 0){
+                context.switchActivities(this.userId)
             }
         }
 
-        signInGoogleBtn.setOnClickListener {  }
+        signInButtonSwitch.setOnClickListener { context.makeTransaction(AuthRegisterFragment(context = context)) }
 
         signUpBtn.setOnClickListener { context.makeTransaction(AuthRegisterFragment(context = context)) }
 
@@ -80,14 +81,14 @@ class AuthLoginFragment(
         val completableFuture = CompletableFuture<Int>()
         CoroutineScope(Dispatchers.IO).launch {
             val item = async {
-                getRequest()
+                postRequest()
             }
             completableFuture.complete(item.await())
         }
         return completableFuture.get()
     }
 
-    private fun getRequest(): Int {
+    private fun postRequest(): Int {
         // Make Request
         val client = OkHttpClient()
         val json = "application/json; charset=utf-8".toMediaTypeOrNull()
@@ -100,6 +101,11 @@ class AuthLoginFragment(
             .post(bodyJ)
             .build()
         val responseBody = client.newCall(request).execute().body
-        return responseBody.string().replace("{\"id\":", "").replace("}", "").toInt()
+        val a = responseBody.string().replace("{\"id\":", "").replace("}", "")
+        return if (a.contains("Wrong")){
+            -1
+        } else {
+            a.toInt()
+        }
     }
 }

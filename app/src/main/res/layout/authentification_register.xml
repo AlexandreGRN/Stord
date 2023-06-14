@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Sign up"
+        android:text="Sign Up"
         android:textColor="@color/black" />
 
     <TextView
@@ -65,39 +65,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="password"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            style="@style/Default_text"
-            android:background="@android:color/transparent"
-            >
-        </EditText>
-
-        <ImageView
-            android:id="@+id/confirm_password_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:src="@drawable/close"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_back">
-
-        <EditText
-            android:id="@+id/confirm_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Confirm password"
+            android:hint="Password"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:inputType="textPassword"
@@ -114,18 +82,69 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="10dp"
-            android:src="@drawable/close"/>
+            android:src="@drawable/invisible"
+            android:contentDescription="@string/ImageDesc"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/forgotPasswordButton"
-        style="@style/Default_text"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="20dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Forgot password ?" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_back">
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Confirm Password"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            style="@style/Default_text"
+            android:background="@android:color/transparent"
+            >
+        </EditText>
+
+        <ImageView
+            android:id="@+id/confirm_password_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/invisible"
+            android:contentDescription="@string/ImageDesc"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/errorTxtRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="start"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/red"
+            />
+
+        <TextView
+            android:id="@+id/forgotPasswordButton"
+            style="@style/Default_text"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:text="Forgot password ?"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signUnButton"
@@ -137,7 +156,8 @@
         android:textAllCaps="false"
         android:layout_marginTop="40dp"
         android:background="@drawable/round_back_sign_in"
-        style="@style/Default_title"/>
+        style="@style/Default_title"
+        android:textColor="@color/white"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -174,28 +194,22 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/signInWithGoogle"
+        android:id="@+id/signInInstead"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@drawable/round_back_sign_in"
+        android:background="@drawable/round_back_sign_in_2"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp">
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/google_icon"/>
-
         <TextView
             style="@style/Default_title"
-            android:layout_width="wrap_content"
+            android:layout_width="203dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Sign Up with Google" />
+            android:maxLines="1"
+            android:text="Login to your account"
+            android:textColor="@color/white"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -218,4 +232,5 @@
         android:text="Sign In"
         android:textColor="@color/signInBlue"/>
     </LinearLayout>
+
 </LinearLayout>

@@ -28,7 +28,7 @@ class FavoriteFragment(
 ) : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val itemList = doNetworkCallsInParallel(context.userId)
+        val itemList = doNetworkCallsInParallel(context.usID)
 
         if (itemList.isEmpty()) {
             return inflater.inflate(R.layout.empty_favorite_item, container, false)
