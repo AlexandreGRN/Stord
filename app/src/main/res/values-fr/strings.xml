@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">Stord</string>
+
+    <!-- Basic strings -->
+    <string name="categories">Catégories</string>
+    <string name="favorite">Favori</string>
+    <string name="favorites">Favoris</string>
+    <string name="items">Articles</string>
+    <string name="favorite_items">Articles favoris</string>
+    <string name="language">langue</string>
+    <!-- AddNew/custom -->
+    <string name="add_new">Ajouter nouveau</string>
+    <string name="custom">Personnaliser</string>
+
+    <string name="category">Catégorie</string>
+    <string name="item">Article</string>
+
+    <string name="image">Image</string>
+    <string name="name">Nom</string>
+    <string name="description">Description</string>
+    <string name="amount">Montant</string>
+
+    <!-- Image description -->
+    <string name="ImageDesc">PlaceHolderImageDesc</string>
+
+    <!-- Error -->
+    <string name="empty_fav1">Vous n\'avez pas encore de favori</string>
+    <string name="empty_fav2">Ajoutez en de nouveaux en cliquant sur l\'étoile des article</string>
+
+
+    <string name="empty_item1">Cette catégorie est vide</string>
+    <string name="empty_item2">Vous pouvez essayer d\'ajouter des catégories ou des articles ici</string>
+
+    <string name="empty_category1">Vous ne possédez aucun article ni catégorie</string>
+    <string name="empty_category2">Vous pouvez essayer d\'en créer en utilisant l\'onglet \'créer un nouveau\'</string>
+
+    <string name="empty_add_new_category1">Vous ne possédez aucune catégorie</string>
+    <string name="empty_add_new_category2">Essayez d\'en ajouter un dans l\'onglet Ajouter une nouvelle catégorie</string>
+    <string name="unknown">Inconnu</string>
+
+    <!-- Add new page -->
+    <string name="add_new_upload">Télécharger une image</string>
+    <string name="add_new_name">Nom</string>
+    <string name="add_new_description">Description</string>
+    <string name="add_new_amount">Montant</string>
+    <string name="add_new_alert">Alerte</string>
+    <string name="add_new_button_accept">créer un nouvel article</string>
+
+    <!-- popup -->
+    <string name="popup_description">Description :</string>
+    <string name="popup_remaining">Restant:</string>
+    <string name="popup_alert">Alerte:</string>
+    <string name="popup_remove">Réduire:</string>
+    <string name="popup_add">Ajouter:</string>
+
+    <!-- Add new arrays -->
+    <string-array name="add_new_array">
+        <item> Category 1 </item>
+        <item> Category 2 </item>
+        <item> Category 3 </item>
+        <item> Category 4 </item>
+        <item> Category 5 </item>
+        <item> Category 6 </item>
+        <item> Category 7 </item>
+        <item> Category 8 </item>
+        <item> Category 9 </item>
+    </string-array>
+    <string name="title_activity_login">Connexion</string>
+
+    <!-- Log In/Register -->
+    <string name="login_title">S\'identifier</string>
+    <string name="login_connect_to_stord">Connectez-vous à votre compte Stord</string>
+    <string name="login_username">Nom d\'utilisateur</string>
+    <string name="login_password">Mot de passe</string>
+    <string name="login_forgot_password">Mot de passe oublié ?</string>
+    <string name="login_button">S\'identifier</string>
+    <string name="login_or">OU</string>
+    <string name="login_create_account1">Créez un compte</string>
+    <string name="login_no_account">Pas de compte ?</string>
+    <string name="login_signup">S\'inscrire</string>
+
+    <string name="register_title">S\'inscrire</string>
+    <string name="register_create_stord_account">Créez votre compte Stord</string>
+    <string name="register_username">Nom d\'utilisateur</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Mot de passe</string>
+    <string name="register_confirm_password">Confirmer le mot de passe</string>
+    <string name="register_forgot_password">Mot de passe oublié ?</string>
+    <string name="register_sign_up">S\'inscrire</string>
+    <string name="register_or">OU</string>
+    <string name="register_button">Se connecter à votre compte</string>
+    <string name="register_already_have_account">Déjà un compte ?</string>
+    <string name="register_sign_in">S\'identifier</string>
+
+</resources>

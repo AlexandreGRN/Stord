@@ -18,7 +18,8 @@
             android:name=".Login"
             android:exported="true"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.Stord">
+            android:theme="@style/Theme.Stord"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

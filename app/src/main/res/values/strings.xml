@@ -7,6 +7,7 @@
     <string name="favorites">Favorites</string>
     <string name="items">Items</string>
     <string name="favorite_items">Favorite Items</string>
+    <string name="language">language</string>
 
     <!-- AddNew/custom -->
     <string name="add_new">Add New</string>
@@ -24,15 +25,17 @@
     <string name="ImageDesc">PlaceHolderImageDesc</string>
 
     <!-- Error -->
-    <string name="emptyFav1">You don\'t have any favorite yet</string>
-    <string name="emptyFav2">You can add new by clicking on the star next to any object</string>
+    <string name="empty_fav1">You don\'t have any favorite yet</string>
+    <string name="empty_fav2">You can add new by clicking on the star next to any object</string>
 
-    <string name="emptyItem1">This category is empty</string>
-    <string name="emptyItem2">You can try to add categories or items here</string>
+    <string name="empty_item1">This category is empty</string>
+    <string name="empty_item2">You can try to add categories or items here</string>
 
-    <string name="emptyCategory1">You don\'t possess any item nor category</string>
-    <string name="emptyCategory2">You can try to create some using the \'create new\' tab</string>
+    <string name="empty_category1">You don\'t possess any item nor category</string>
+    <string name="empty_category2">You can try to create some using the \'create new\' tab</string>
 
+    <string name="empty_add_new_category1">You don\'t possess any category</string>
+    <string name="empty_add_new_category2">Try to add one in the add new category tab</string>
     <string name="unknown">Unknown</string>
 
     <!-- Add new page -->
@@ -42,6 +45,8 @@
     <string name="add_new_amount">Amount</string>
     <string name="add_new_alert">Alert</string>
     <string name="add_new_button_accept">Create new item</string>
+
+    <!-- popup -->
     <string name="popup_description">Description :</string>
     <string name="popup_remaining">Remaining:</string>
     <string name="popup_alert">Alert:</string>
@@ -61,5 +66,33 @@
         <item> Category 9 </item>
     </string-array>
     <string name="title_activity_login">Login</string>
+
+    <!-- Log In/Register -->
+    <string name="login_title">Sign In</string>
+    <string name="login_connect_to_stord">Connect to your Stord account</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_forgot_password">Forgot password ?</string>
+    <string name="login_button">Sign In</string>
+    <string name="login_or">OR</string>
+    <string name="login_create_account1">Create an account instead</string>
+    <string name="login_no_account">No account ?</string>
+    <string name="login_signup">Sign Up</string>
+
+    <string name="register_title">Sign Up</string>
+    <string name="register_create_stord_account">Create your Stord account</string>
+    <string name="register_username">Username</string>
+    <string name="register_email">Email</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Confirm Password</string>
+    <string name="register_forgot_password">Forgot password ?</string>
+    <string name="register_sign_up">Sign Up</string>
+    <string name="register_or">OR</string>
+    <string name="register_button">Login to your account</string>
+    <string name="register_already_have_account">Already have an account ?</string>
+    <string name="register_sign_in">Sign In</string>
+    <string name="stord_seems_to_be_unavailable">Stord seems to be unavailable</string>
+    <string name="please_try_again_later">Please try again later</string>
+
 
 </resources>

@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import fr.tulkiidra.stord.fragments.AuthLoginFragment
+import fr.tulkiidra.stord.fragments.ApiTestFragment
 
 
 class Login : AppCompatActivity() {
@@ -18,7 +18,7 @@ class Login : AppCompatActivity() {
         val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
         navigationBarView.visibility = View.GONE
 
-        makeTransaction(AuthLoginFragment(this))
+        makeTransaction(ApiTestFragment(this))
 
     }
     fun makeTransaction(fragment: Fragment) {

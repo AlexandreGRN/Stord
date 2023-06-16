@@ -64,6 +64,9 @@ class AddNewItemFragment(
             arrayList.add(d.name)
         }
 
+        if (arrayList.size == 0){
+            return inflater.inflate(R.layout.empty_category_add_new_item, container, false)
+        }
         val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, arrayList)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = arrayAdapter
