@@ -10,7 +10,7 @@
         android:layout_centerVertical="true"
         android:layout_above="@id/iduuxu"
         android:padding="10dp"
-        android:text="@string/emptyCategory1"
+        android:text="@string/empty_category1"
         android:textAlignment="center"
         android:gravity="center"
         style="@style/Default_title"/>
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/emptyCategory2"
+        android:text="@string/empty_category2"
         android:textAlignment="center"
         android:gravity="center"
         style="@style/Default_text"/>

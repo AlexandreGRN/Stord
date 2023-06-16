@@ -1,9 +1,11 @@
 package fr.tulkiidra.stord
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -16,6 +18,7 @@ import fr.tulkiidra.stord.fragments.AddNewItemFragment
 import fr.tulkiidra.stord.fragments.CategoryFragment
 import fr.tulkiidra.stord.fragments.FavoriteFragment
 import fr.tulkiidra.stord.fragments.ItemFragment
+import java.util.Locale
 
 
 class MainActivity() : AppCompatActivity() {
@@ -31,9 +34,11 @@ class MainActivity() : AppCompatActivity() {
         this.usID = intent.getIntExtra("userId", 0)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val invisibleTextViewForMenu = findViewById<TextView>(R.id.add_new_invisible_tv)
+        createNavBar(findViewById<TextView>(R.id.add_new_invisible_tv))
 
-        // nav bar
+    }
+
+    private fun createNavBar(invisibleTextViewForMenu: View) {
         val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
         navigationBarView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
@@ -99,13 +104,9 @@ class MainActivity() : AppCompatActivity() {
         transaction.commit()
     }
 
-    fun visibleNavBar(){
-        val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
-        navigationBarView.visibility = View.VISIBLE
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
+
 }

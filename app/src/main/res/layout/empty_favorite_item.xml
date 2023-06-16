@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:layout_above="@id/idTVMsg"
         android:padding="10dp"
-        android:text="@string/emptyFav1"
+        android:text="@string/empty_fav1"
         android:textAlignment="center"
         android:gravity="center"
         style="@style/Default_title"/>
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/emptyFav2"
+        android:text="@string/empty_fav2"
         android:textAlignment="center"
         android:gravity="center"
         style="@style/Default_text"/>
