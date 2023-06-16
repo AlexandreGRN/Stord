@@ -20,6 +20,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 class ItemPopup(
+    val context : MainActivity,
     private val adapter: ItemCardAdapter,
     private val item: ItemModel
 ) : Dialog(adapter.context) {
@@ -53,9 +54,11 @@ class ItemPopup(
             if (item.favorite) {
                 doNetworkCallsInParallelPut(1)
                 favButton.setImageResource(R.drawable.fav_star)
+                context.refresh(context)
             } else {
                 doNetworkCallsInParallelPut(0)
                 favButton.setImageResource(R.drawable.unfav_star)
+                context.refresh(context)
             }
         }
     }
@@ -65,10 +68,11 @@ class ItemPopup(
         }
     }
 
-    private  fun setupDeleteButton(){
+    private fun setupDeleteButton(){
         findViewById<ImageView>(R.id.popup_supress_item).setOnClickListener{
             dismiss()
             doNetworkCallsInParallelDelete(item.id)
+            context.refresh(context)
         }
     }
     private fun setupComponants() {

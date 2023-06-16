@@ -67,20 +67,24 @@ class CategoryCardAdapter(
         }
 
         holder.itemView.setOnLongClickListener{
-            CategoryPopup(this, currentCategory).show()
+            CategoryPopup(context, this, currentCategory).show()
             return@setOnLongClickListener true
         }
         holder.itemView.setOnClickListener{
+            context.lastFragment = "ItemFragment"
+            context.lastItem = currentCategory.id
             context.makeTransaction(ItemFragment(context, currentCategory.id))
         }
 
         holder.starIcon?.setOnClickListener {
             if (currentCategory.favorite){
-                holder.starIcon?.setImageResource(R.drawable.unfav_star)
-                CategoryPopup(this, currentCategory).doNetworkCallsInParallelPut(0)
+                //holder.starIcon?.setImageResource(R.drawable.unfav_star)
+                CategoryPopup(context, this, currentCategory).doNetworkCallsInParallelPut(0)
+                context.refresh(context)
             } else {
-                holder.starIcon?.setImageResource(R.drawable.fav_star)
-                CategoryPopup(this, currentCategory).doNetworkCallsInParallelPut(1)
+                //holder.starIcon?.setImageResource(R.drawable.fav_star)
+                CategoryPopup(context, this, currentCategory).doNetworkCallsInParallelPut(1)
+                context.refresh(context)
             }
         }
     }

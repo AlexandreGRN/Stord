@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
+import fr.tulkiidra.stord.MainActivity
 import com.bumptech.glide.Glide
 import fr.tulkiidra.stord.adapter.CategoryCardAdapter
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +21,7 @@ import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
 
 class CategoryPopup(
+    private val context: MainActivity,
     private val adapter: CategoryCardAdapter,
     private val category: CategoryModel
 ) : Dialog(adapter.context) {
@@ -47,6 +49,7 @@ class CategoryPopup(
         findViewById<ImageView>(R.id.popup_supress_category).setOnClickListener{
             dismiss()
             doNetworkCallsInParallelDelete(category.id)
+            context.refresh(context)
         }
     }
 
@@ -69,9 +72,11 @@ class CategoryPopup(
             if (category.favorite){
                 doNetworkCallsInParallelPut(1)
                 favButton.setImageResource(R.drawable.fav_star)
+                context.refresh(context)
             } else {
                 doNetworkCallsInParallelPut(0)
                 favButton.setImageResource(R.drawable.unfav_star)
+                context.refresh(context)
             }
         }
     }

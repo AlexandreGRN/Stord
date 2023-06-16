@@ -63,16 +63,18 @@ class ItemCardAdapter (
 
         // when item clicked
         holder.itemView.setOnLongClickListener{
-            ItemPopup(this, currentItem).show()
+            ItemPopup(context, this, currentItem).show()
             return@setOnLongClickListener true
         }
         holder.starIcon?.setOnClickListener {
             if (currentItem.favorite){
                 holder.starIcon?.setImageResource(R.drawable.unfav_star)
-                ItemPopup(this, currentItem).doNetworkCallsInParallelPut(0)
+                ItemPopup(context, this, currentItem).doNetworkCallsInParallelPut(0)
+                context.refresh(context)
             } else {
                 holder.starIcon?.setImageResource(R.drawable.fav_star)
-                ItemPopup(this, currentItem).doNetworkCallsInParallelPut(1)
+                ItemPopup(context , this, currentItem).doNetworkCallsInParallelPut(1)
+                context.refresh(context)
             }
         }
     }
