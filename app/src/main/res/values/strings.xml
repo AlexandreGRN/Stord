@@ -91,6 +91,8 @@
     <string name="register_button">Login to your account</string>
     <string name="register_already_have_account">Already have an account ?</string>
     <string name="register_sign_in">Sign In</string>
+    <string name="stord_seems_to_be_unavailable">Stord seems to be unavailable</string>
+    <string name="please_try_again_later">Please try again later</string>
 
 
 </resources>
