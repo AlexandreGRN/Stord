@@ -2,7 +2,10 @@ package fr.tulkiidra.stord
 
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.view.Menu
 import android.view.View
+import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -24,6 +27,8 @@ class MainActivity() : AppCompatActivity() {
         this.usID = intent.getIntExtra("userId", 0)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val invisibleTextViewForMenu = findViewById<TextView>(R.id.add_new_invisible_tv)
+
         // nav bar
         val navigationBarView = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
         navigationBarView.setOnNavigationItemSelectedListener {
@@ -37,8 +42,7 @@ class MainActivity() : AppCompatActivity() {
                     makeTransaction(fragment = CategoryFragment(this))
                 }
                 R.id.add_new_page -> {
-                    Toast.makeText(this, "Add New", Toast.LENGTH_LONG).show()
-                    makeTransaction(fragment = AddNewCategoryFragment(this))
+                    showMenu(invisibleTextViewForMenu, this)
                 }
                 else -> {
 
@@ -47,6 +51,29 @@ class MainActivity() : AppCompatActivity() {
             true
         }
     }
+
+    private fun showMenu(view : View, context : MainActivity): Boolean {
+        val popup = PopupMenu(this, view)
+        popup.inflate(R.menu.add_new_menu)
+        popup.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.add_new_item_menu -> {
+                    makeTransaction(fragment = AddNewItemFragment(context = context))
+                    Toast.makeText(context, "Add New Item", Toast.LENGTH_LONG).show()
+                }
+
+                R.id.add_new_category_menu -> {
+                    makeTransaction(fragment = AddNewCategoryFragment(context = context))
+                    Toast.makeText(context, "Add New Category", Toast.LENGTH_LONG).show()
+                }
+            }
+            return@setOnMenuItemClickListener true
+        }
+        popup.show()
+        return true
+    }
+
+
 
     fun makeTransaction(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
