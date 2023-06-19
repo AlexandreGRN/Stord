@@ -1,11 +1,5 @@
 USE stord_test_db;
 
-INSERT INTO owners(email)
-VALUES
-    ('1@gmail.com'),
-    ('2@gmail.com'),
-    ('3@gmail.com');
-
 INSERT INTO categories(name, description, imageURL, favorite, owner_id, parent_category_id)
 VALUES
     ('Transport', 'Ici est entreposé tout les services de transport et tout ce qui est en lien avec les voitures', 'https://cdn.pixabay.com/photo/2016/11/29/09/32/auto-1868726_960_720.jpg', 0, 1, NULL),
@@ -20,7 +14,7 @@ VALUES
 
 INSERT INTO items(name, description, remaining, alert, imageURL, favorite, parent_category_id)
 VALUES
-    ('Entrepot de nourriture', NULL, 3, 0, 'https://cdn.pixabay.com/photo/2016/11/22/19/24/archive-1850170_960_720.jpg', 0, 3),
+    ('Entrepot de nourriture', '', 3, 0, 'https://cdn.pixabay.com/photo/2016/11/22/19/24/archive-1850170_960_720.jpg', 0, 3),
     ('Crevettes', '1KG', 100, 5, 'https://cdn.pixabay.com/photo/2016/03/05/22/31/prawns-1239307_960_720.jpg', 0, 6),
     ('Sac de Riz', '1KG', 10000, 1000, 'https://cdn.pixabay.com/photo/2017/02/13/05/44/rice-2061877_960_720.jpg', 0, 6);
 

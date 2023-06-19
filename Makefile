@@ -17,4 +17,4 @@ setup:
 	npm install -y https
 
 mysql:
-	@mysql -h stord.cuderhz8pwyq.eu-north-1.rds.amazonaws.com -u Tulkiidra -p
+	@mysql -h storddatabase.cuderhz8pwyq.eu-north-1.rds.amazonaws.com -u Tulkiidra -p
