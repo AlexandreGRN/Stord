@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/navbar_styles.css">
     <link rel="stylesheet" href="css/main_section_styles.css">
     <link rel="stylesheet" href="css/services_section_styles.css">
+    <link rel="stylesheet" href="css/home_section_styles.css">
+    <link rel="stylesheet" href="css/howtouse_section_styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <!-- NavBar -->
@@ -20,18 +23,18 @@
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
-                    <a href="/" class="navbar_links">
+                    <a class="navbar_links" id="home_link">
                         Home
                     </a>
                 </li>
                 <li class="navbar_item">
-                    <a href="tech.htlm" class="navbar_links">
-                        Tech
+                    <a class="navbar_links" id="download_link">
+                        Download
                     </a>
                 </li>
                 <li class="navbar_item">
-                    <a href="/" class="navbar_links">
-                        Products
+                    <a class="navbar_links" id="howtouse_link">
+                        How to use
                     </a>
                 </li>
                 <li class="navbar_btn">
@@ -51,7 +54,7 @@
                 <h2>The stock management application</h2>
                 <p>For both android and web</p>
                 <button class="main_btn">
-                    <a href="/">Learn more</a>
+                    <a href="https://github.com/AlexandreGRN/Stord.git">Learn more</a>
                 </button>
             </div>
             <div class="main_img-container">
@@ -59,20 +62,47 @@
             </div>
         </div>
     </div>
+    
+    <!-- Home fragment -->
+    <div class="home" id="home">
+        <div class="home_container">
+            <div class="home_title"><h1>Home</h1></div>
+            <div class="home_content">
+                <div class="home_paragraphs">
+                    <p>Stord is a stock management application that helps you manage your stock and keep track of your sales. It is a simple and easy to use application that can be used by anyone. It is available on both android and web.</p>
+                    <p>The main goal of the application is to simplify stock manager work by overseeing more frequently inventories in real time. It can be used as a way to control more wastes thanks to graphs accessible via the Stord web page.</p>
+                    <p>Start now by creating your account and by downloading the Stord android application.</p>
+                </div>
+                <div class="home_image"></div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Service Section -->
+
+
+    <!-- get started Section -->
+    <div class="services_title" id="download"><h1>Get Started</h1></div>
     <div class="services">
-        <h1>See what the hype is about</h1>
         <div class="services_containers">
             <div class="services_card">
-                <h2>Experience Bliss</h2>
-                <p>AI powered tech</p>
-                <button>Get Started</button>
+                <h2>Start your experience</h2>
+                <p>Android App</p>
+                <button>Download</button>
             </div>
             <div class="services_card">
-                <h2>are you ready</h2>
-                <p>Take the leap</p>
-                <button>Get Started</button>
+                <h2>Review your changes</h2>
+                <p>Web account</p>
+                <button>Log-in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to use -->
+    <div class="howtouse" id="howtouse">
+        <div class="howtouse_container">
+            <div class="howtouse_title"><h1>How to use</h1></div>
+            <div class="vid">
+                <iframe width="756" height="425" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>

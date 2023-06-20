@@ -105,7 +105,7 @@
         justify-self: center;
         width: 100%;
         margin: 0 auto;
-        height: 90vh;
+        height: 300px;
     }
 
     .main_content{
@@ -125,5 +125,10 @@
     .main_content p{
         margin-top: 1rem;
         font-size: 1.5rem;
+    }
+
+    #main_img {
+        width: 0%;
+        height: 0%;
     }
 }
