@@ -11,3 +11,4 @@ source ~/.bashrc
 nvm install --lts
 apt install python3
 apt upgrade -y
+apt install -y apache2

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stord</title>
+    <link rel="stylesheet" href="css/chart_page_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav class="nav_bar">
+        <ul>
+            <li>
+                <a href="stord.tech" class="logo">
+                    <img src="./images/logo.png" alt="">
+                    <span class="nav-item">Stord</span>
+                </a>
+            </li>
+            <li><a href="stord.tech">
+                <i class="fas fa-home"></i>
+                <span class="nav-item">Home</span>
+            </a></li>
+            <li><a href="#">
+                <i class="fas fa-user"></i>
+                <span class="nav-item">Profile</span>
+            </a></li>
+            <li><a href="tech.html">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Analytics</span>
+            </a></li>
+            <li><a href="home.html">
+                <i class="fas fa-list"></i>
+                <span class="nav-item">Actions List</span>
+            </a></li>
+            <li><a href="#" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Log out</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <div class="main">
+        <div class="section-chart">
+            <div class="title">Total added</div>
+            <label for="Name">Name:</label>
+            <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Spider</option>
+                <option value="goldfish">Goldfish</option>
+            </select>
+            <canvas id="barCanvas_total_added" aria-label="chart" role="img"></canvas>
+        </div>
+
+        <div class="section-chart">
+            <div class="title">Variations</div>
+            <label for="Name">Name:</label>
+            <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Spider</option>
+                <option value="goldfish">Goldfish</option>
+            </select>
+            <canvas id="lineCanvas_variation" aria-label="charta" role="img"></canvas>
+        </div>
+
+        <div class="section-chart">
+            <div class="title">Items with most actions</div>
+            <canvas id="lineCanvas_variation" aria-label="charta" role="img"></canvas>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #dfe9f5;
+}
+.nav_bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background: #dfe9f5;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.nav_bar .logo {
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+}
+
+.nav_bar .logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.nav_bar .logo span {
+    font-weight: bold;
+    padding: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.nav_bar a {
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+}
+
+.nav_bar .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav_bar .nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
+.nav_bar a:hover {
+    background-color: #eee;
+}
+
+.nav_bar:hover {
+    width: 280px;
+    transition: all 0.5s ease;
+}
+
+.nav_bar .logout {
+    position: absolute;
+    bottom: 0;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 130px;
+    padding-right: 20px;
+}
+
+.grid {
+    padding-top: 50px;
+}
+.grid .own-recent-actions {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.grid .rec-act-box {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.grid .title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.grid .details {
+    list-style: none;
+}
+
+.grid .topic {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.grid .details li {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 8px 0;
+}
+
+.grid .recent-actions {
+    width: 65%;
+}
+
+.grid .actions-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.grid .actions-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid .recent-actions {
+    width: 65%;
+}
+
+.grid .rec-act-box {
+    background-color: aliceblue;
+}
+
+.grid .own-recent-actions {
+    width: 65%;
+    margin-left: 20px;
+    background-color: aliceblue;
+}
+
+.grid .button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.grid .button a {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #102531;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.grid .button a:hover {
+    transition: all 0.3s ease;
+    background-color: rgb(17, 67, 111);
+}
