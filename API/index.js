@@ -359,7 +359,7 @@ app.put('/api/fav/item/:favtarget/:id', async (req, res) => {
 //category
 app.delete('/api/delete/category/:id', async (req, res) => {
     const id = req.params.id
-    sql = "DELETE FROM categories WHERE id = " + id
+    var sql = "DELETE FROM categories WHERE id = " + id
     connection.query(sql, (err, results) => {
         if (err) {
             res.json({ Status: 'Error' });
@@ -371,7 +371,7 @@ app.delete('/api/delete/category/:id', async (req, res) => {
 //item
 app.delete('/api/delete/item/:id', async (req, res) => {
     const id = req.params.id
-    sql = "DELETE FROM items WHERE id = " + id
+    var sql = "DELETE FROM items WHERE id = " + id
     connection.query(sql, (err, results) => {
         if (err) {
             res.json({ Status: 'Error' });
@@ -381,27 +381,47 @@ app.delete('/api/delete/item/:id', async (req, res) => {
     });
 });
 
-// Listen if API is connected
-var port = process.env.PORT || 5000;
-if (process.env.TEST_API == "true") {
-    app.listen(5000, () => {
-        console.log("Server has started on port 5000");
+
+// ANALYTICS
+// History of a user
+app.get('/api/history/user/:user_id', async (req, res) => {
+    const user_id = req.params.user_id
+    const sql = `SELECT * FROM history WHERE user_id = ${user_id}`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json(results);
     });
-} else {
-    https
-    .createServer(
-                    // Provide the private and public key to the server by reading each
-                    // file's content with the readFileSync() method.
-        {
-        key: fs.readFileSync("key.pem"),
-        cert: fs.readFileSync("cert.pem"),
-        },
-        app
-    )
-    .listen(443, () => {
-        console.log("Server has started on port ", port);
-    })
-};
+});
+
+// History of an item
+app.get('/api/history/item/:item_id', async (req, res) => {
+    const item_id = req.params.item_id
+    const sql = `SELECT history.id, items.name, users.username, history.date, history.action FROM history JOIN users ON history.user_id = users.id JOIN items ON history.item_id = items.id WHERE item_id = ${item_id}`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+// Variations
+app.get('/api/variation/:item_id', async (req, res) => {
+    const item_id = req.params.item_id
+    const sql = `SELECT * FROM variation WHERE item_id = ${item_id}`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            console.log(err)
+            return;
+        }
+        res.json(results);
+    });
+});
 
 
 // LOGIN
@@ -459,3 +479,25 @@ app.post('/api/register', async (req, res) => {
         return;
     }})
 });
+
+// Listen if API is connected
+var port = process.env.PORT || 5000;
+if (process.env.TEST_API == "true") {
+    app.listen(5000, () => {
+        console.log("Server has started on port 5000");
+    });
+} else {
+    https
+    .createServer(
+                    // Provide the private and public key to the server by reading each
+                    // file's content with the readFileSync() method.
+        {
+        key: fs.readFileSync("key.pem"),
+        cert: fs.readFileSync("cert.pem"),
+        },
+        app
+    )
+    .listen(443, () => {
+        console.log("Server has started on port ", port);
+    })
+};

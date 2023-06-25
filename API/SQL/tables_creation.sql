@@ -33,16 +33,24 @@ CREATE TABLE IF NOT EXISTS items(
     FOREIGN KEY (parent_category_id) REFERENCES categories(id)
 );
 
-CREATE TABLE IF NOT EXISTS history(
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    action VARCHAR(255),
-    date VARCHAR(255),
-);
-
 CREATE TABLE IF NOT EXISTS variation(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     item_id INT,
-    quantity BIGINT,
+    user_id INT,
     date DATETIME,
-    FOREIGN KEY (item_id) REFERENCES items(id)
+    quantity BIGINT, 
+
+    FOREIGN KEY (item_id) REFERENCES items(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS history(
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    item_id INT,
+    user_id INT,
+    date DATETIME,
+    action VARCHAR(255),
+
+    FOREIGN KEY (item_id) REFERENCES items(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
