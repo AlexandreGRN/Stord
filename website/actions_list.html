@@ -13,12 +13,12 @@
     <nav class="nav_bar">
         <ul>
             <li>
-                <a href="http://stord.tech" class="logo">
+                <a href="index.html" class="logo">
                     <img src="./images/logo.png" alt="">
                     <span class="nav-item">Stord</span>
                 </a>
             </li>
-            <li><a href="http://stord.tech">
+            <li><a href="index.html">
                 <i class="fas fa-home"></i>
                 <span class="nav-item">Home</span>
             </a></li>
@@ -26,11 +26,11 @@
                 <i class="fas fa-user"></i>
                 <span class="nav-item">Profile</span>
             </a></li>
-            <li><a href="tech.html">
+            <li><a href="analytics.html">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Analytics</span>
             </a></li>
-            <li><a href="home.html">
+            <li><a href="actions_list.html">
                 <i class="fas fa-list"></i>
                 <span class="nav-item">Actions List</span>
             </a></li>
@@ -46,37 +46,17 @@
             <div class="rec-act-box">
                 <div class="title">My Recent Actions</div>
                 <div class="actions-details">
-                    <ul class="details">
+                    <ul class="details" id="recentUser">
                         <li class="topic"><b>User</b></li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="recentItem">
                         <li class="topic"><b>Item Name</b></li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="recentDate">
                         <li class="topic"><b>Date</b></li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="recentAction">
                         <li class="topic"><b>Actions</b></li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
                     </ul>
                 </div>
                 <div class="button"><a href="#">See all</a></div>
@@ -87,42 +67,26 @@
             <div class="own-rec-act-box">
                 <div class="title">All Recent Actions</div>
                 <div class="actions-details">
-                    <ul class="details">
+                    <ul class="details" id="ownRecentUser">
                         <li class="topic"><b>User</b></li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
-                        <li>Alexandre</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="ownRecentItem">
                         <li class="topic"><b>Item Name</b></li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
-                        <li>Garlic</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="ownRecentDate">
                         <li class="topic"><b>Date</b></li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
-                        <li>Added 15</li>
                     </ul>
-                    <ul class="details">
+                    <ul class="details" id="ownRecentAction">
                         <li class="topic"><b>Actions</b></li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
-                        <li>02/01/23</li>
                     </ul>
                 </div>
                 <div class="button"><a href="#">See all</a></div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="scripts/actions_list_script.js"></script>
 </body>
 </html>
