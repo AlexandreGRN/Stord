@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login form</title>
+        <link rel="stylesheet" href="css/login_page_styles.css">
+    </head>
+    <body>
+        <div class="center">
+            <h1>Login</h1>
+            <form>
+                <div class="txt_field">
+                    <input type="text" id="username_txtbox" required>
+                    <span></span>
+                    <label>Username</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" id="password_txtbox" required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <input type="submit" value="Login" id="login_btn">
+            </form>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="scripts/login_script.js"></script>
+    </body>
+</html>

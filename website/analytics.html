@@ -33,7 +33,7 @@
                 <i class="fas fa-list"></i>
                 <span class="nav-item">Actions List</span>
             </a></li>
-            <li><a href="#" class="logout">
+            <li><a href="#" class="logout" id="logout_btn">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="nav-item">Log out</span>
             </a></li>
@@ -44,14 +44,8 @@
         <div class="section-chart">
             <div class="title">Total added</div>
             <label for="Name">Name:</label>
-            <select name="pets" id="pet-select">
+            <select name="total_added_select" id="total_added_item-select">
                 <option value="">--Please choose an option--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
-                <option value="parrot">Parrot</option>
-                <option value="spider">Spider</option>
-                <option value="goldfish">Goldfish</option>
             </select>
             <canvas id="barCanvas_total_added" aria-label="chart" role="img"></canvas>
         </div>
@@ -59,14 +53,8 @@
         <div class="section-chart">
             <div class="title">Variations</div>
             <label for="Name">Name:</label>
-            <select name="pets" id="pet-select">
+            <select name="variation_select" id="variation_item-select">
                 <option value="">--Please choose an option--</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
-                <option value="parrot">Parrot</option>
-                <option value="spider">Spider</option>
-                <option value="goldfish">Goldfish</option>
             </select>
             <canvas id="lineCanvas_variation" aria-label="charta" role="img"></canvas>
         </div>

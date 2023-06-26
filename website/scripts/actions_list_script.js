@@ -9,12 +9,18 @@ var ownRecentItemNameHolder = document.getElementById("ownRecentItem");
 var ownRecentDateHolder = document.getElementById("ownRecentDate");
 var ownRecentActionsHolder = document.getElementById("ownRecentAction");
 
+var logoutButton = document.getElementById("logout_btn");
 
-async function getItemList(userId = 1) {
+logoutButton.addEventListener("click", function() {
+    document.cookie = "user_token=";
+    location.href = "index.html";
+});
+
+async function getItemList(userId) {
     data = [];
     returnData = [];
     try {
-        const response = await axios.get('https://stord.tech/api/allitems/' + userId);
+        const response = await axios.get('https://stord.tech/api/allitems/' + document.cookie.split("=")[1]);
         for (i in response.data){
             data = await getHistoryData(i);
             if (data.length > 0){
@@ -54,7 +60,6 @@ async function createMyRecentActions(historyList, recentUsernameHolder, recentIt
 
 function addNewInfo(historyList, Holder, info, own){
     for (i in historyList){
-        console.log(historyList[i]);
         var li = document.createElement("li");
         var liText = historyList[i][info]
         if (info == "date"){

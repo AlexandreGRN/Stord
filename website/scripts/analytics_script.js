@@ -1,3 +1,20 @@
+// Elements
+const barCanvasTotalAdded = document.getElementById("barCanvas_total_added").getContext('2d');
+const barCanvasVariation = document.getElementById("lineCanvas_variation").getContext('2d');
+const logoutButton = document.getElementById("logout_btn");
+const select1 = document.getElementById("total_added_item-select");
+const select2 = document.getElementById("variation_item-select");
+
+// API requests
+async function getItemList(userId) {
+    try{
+        const response = await axios.get("https://stord.tech/api/allitems/" + userId);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 async function getVariationData(itemId) {
     try {
         const response = await axios.get('https://stord.tech/api/variation/' + itemId);
@@ -8,9 +25,7 @@ async function getVariationData(itemId) {
 }
 
 
-const barCanvasTotalAdded = document.getElementById("barCanvas_total_added").getContext('2d');
-const barCanvasVariation = document.getElementById("lineCanvas_variation").getContext('2d');
-
+// Functions for graphs
 function createDataBarChartTotalAdded(variationData) {
     const data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     for (j in variationData) {
@@ -29,8 +44,8 @@ function createAdvancedDataBarChartTotalAdded(variationData) {
     return data;
 };
 
-const makeBarChartTotalAdded = async () => {
-    const a = await getVariationData(4);
+const makeBarChartTotalAdded = async (id) => {
+    const a = await getVariationData(id);
     const barChartTotalAdded = new Chart(barCanvasTotalAdded, {
         type: 'bar',
         data: {
@@ -55,8 +70,8 @@ const makeBarChartTotalAdded = async () => {
     });
 };
 
-const makeBarChartVariation = async () => {
-    const a = await getVariationData(4);
+const makeBarChartVariation = async (id) => {
+    const a = await getVariationData(id);
     const barChartVariation = new Chart(barCanvasVariation, {
         type: 'line',
         data: {
@@ -76,5 +91,28 @@ const makeBarChartVariation = async () => {
     });
 };
 
-makeBarChartTotalAdded();
-makeBarChartVariation();
+// Create elements
+logoutButton.addEventListener("click", function() {
+    document.cookie = "user_token=";
+    location.href = "index.html";
+});
+
+async function createSelectsOptions() {
+    itemList = await getItemList(document.cookie.split("=")[1]);
+    for (i in itemList) {
+        var option = document.createElement("option");
+        option.text = itemList[i]["name"];
+        option.value = itemList[i]["id"];
+        select1.add(option);
+        select2.add(option.cloneNode(true));
+    }
+
+}
+
+select1.onchange = async function() {
+    makeBarChartTotalAdded(select1.value);
+}
+select2.onchange = async function() {
+    makeBarChartVariation(select2.value);
+}
+createSelectsOptions();
