@@ -10,8 +10,16 @@ const fs = require("fs");
 // Variables & prerequisites
 const app = express();
 app.use(express.json());
-app.use(cors());
 
+const allowedOrigins = ['https://stord.tech:450'];
+
+var corsOptions = {
+	origin: 'https://stord.tech:450',
+    optionsSuccessStatus: 200, // For legacy browser support
+    methods: "GET, POST"
+}
+
+app.use(cors(corsOptions));
 
 // DB connection //
 const connection = mysql.createConnection({
@@ -426,7 +434,7 @@ app.get('/api/variation/:item_id', async (req, res) => {
 
 // LOGIN
 
-app.post('/api/login', async (req, res) => {
+app.post('/api/login',  async (req, res) => {
     jsonLogin = JSON.parse(JSON.stringify(req.body))
     const sql = `SELECT * FROM users WHERE username = '${jsonLogin.username}' AND password = '${jsonLogin.password}'`;
     connection.query(sql, (err, results) => {
