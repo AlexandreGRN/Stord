@@ -41,6 +41,11 @@ Stord is a Storage Management Application for Android
 |V.0.14.0|Restructuration of the Application|
 |V.0.15.0|Frame 5 added (Add_New Fragment: Item)
 |V.0.15.1|Frame 5 added (Add_New Fragment: Category)
+|V.1.0.0|Landing Page Creation|
+|V.1.1.0|Starting the creation of the dashboard|
+|V.1.1.1|Created Analytics Page|
+|V.1.1.2|Created Action List Page|
+|V.1.1.3|Changing the API to include CORS|
 
 ## How to run
 This repository contain multiple part of the project. The `Stord` folder contains:
