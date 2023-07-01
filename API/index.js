@@ -417,6 +417,37 @@ app.get('/api/history/item/:item_id', async (req, res) => {
     });
 });
 
+app.post('/api/history', async (req, res) => {
+    jsonItem = JSON.parse(JSON.stringify(req.body))
+    var sql = 'INSERT INTO history(user_id, item_id, date, action) VALUES ' + `(${jsonItem.user_id}, ${jsonItem.item_id}, '${jsonItem.date}'), '${jsonItem.action}')`
+    var sql2 = `UPDATE items SET remaining = ${jsonItem.remaining}, alert = ${jsonItem.alert} WHERE id = ${jsonItem.item_id}`
+    var sql3 = 'INSERT INTO variation(item_id, user_id, date, quantity) VALUES ' + `(${jsonItem.item_id}, ${jsonItem.user_id}, '${jsonItem.date}', ${jsonItem.quantity})`
+    try{
+        connection.query(sql, (err, results) => {
+            if (err) {
+                res.json({ Status: 'Error' });
+                return;
+            }
+        })
+        connection.query(sql2, (err, results) => {
+            if (err) {
+                res.json({ Status: 'Error' });
+                return;
+            }
+        })
+        connection.query(sql3, (err, results) => {
+            if (err) {
+                res.json({ Status: 'Error' });
+                return;
+            }
+        })
+        res.json({ Status: 'OK' });
+    } catch (err) {
+        res.json({ Status: 'Error' });
+    }
+    res.json({ Status: 'OK' });
+});
+
 // Variations
 app.get('/api/variation/:item_id', async (req, res) => {
     const item_id = req.params.item_id
@@ -486,6 +517,22 @@ app.post('/api/register', async (req, res) => {
         res.json({ Status: 'Email already used' });
         return;
     }})
+});
+
+// GET USER
+app.get('/api/user/:id', async (req, res) => {
+    const id = req.params.id
+    const sql = `SELECT * FROM users WHERE id = ${id}`;
+    connection.query(sql, (err, results) => {
+        if (err) {
+            res.json({ Status: 'Error' });
+            return;
+        } else if (results.length == 0){
+            res.json({ Status: 'User not found' });
+            return;
+        }
+        res.json({username: results[0].username});
+    });
 });
 
 // Listen if API is connected

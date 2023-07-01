@@ -26,8 +26,8 @@ VALUES
 
 INSERT INTO history(item_id, user_id, date, action)
 VALUES
-    (4, 1, '2020-01-01 00:00:00', 'create new item');
-    (5, 1, '2020-01-11 00:01:00', 'create new item');
+    (4, 1, '2020-01-01 00:00:00', 'create new item'),
+    (5, 1, '2020-01-11 00:01:00', 'create new item'),
     (6, 1, '2020-02-01 10:00:00', 'create new item');
 
 INSERT INTO variation(item_id, user_id, date, quantity)

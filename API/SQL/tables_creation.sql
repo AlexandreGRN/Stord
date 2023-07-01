@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS history(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     item_id INT,
     user_id INT,
-    date DATETIME,
+    date VARCHAR(255),
     action VARCHAR(255),
 
     FOREIGN KEY (item_id) REFERENCES items(id),
