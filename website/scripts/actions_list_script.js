@@ -16,13 +16,22 @@ logoutButton.addEventListener("click", function() {
     location.href = "index.html";
 });
 
+async function getUNAME(userId) {
+    try {
+        const response = await axios.get('https://stord.tech/api/user/' + userId);
+        return response.data.username;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function getItemList(userId) {
     data = [];
     returnData = [];
     try {
         const response = await axios.get('https://stord.tech/api/allitems/' + document.cookie.split("=")[1]);
-        for (i in response.data){
-            data = await getHistoryData(i);
+        for (i in response.data.length){
+            data = await getHistoryData(response.data[i]["id"]);
             if (data.length > 0){
                 returnData = returnData.concat(data);
             }
@@ -45,27 +54,28 @@ async function getHistoryData(itemId) {
 
 
 async function createMyRecentActions(historyList, recentUsernameHolder, recentItemNameHolder, recentDateHolder, recentActionsHolder, ownRecentUsernameHolder, ownRecentItemNameHolder, ownRecentDateHolder, ownRecentActionsHolder){
-    historyList = await getItemList(1);
-    addNewInfo(historyList, recentUsernameHolder, "username", false);
-    addNewInfo(historyList, recentItemNameHolder, "name", false);
-    addNewInfo(historyList, recentDateHolder, "date", false);
-    addNewInfo(historyList, recentActionsHolder, "action", false);
+    historyList = await getItemList(document.cookie.split("=")[1]);
+    var username = await getUNAME(document.cookie.split("=")[1]);
+    addNewInfo(historyList, recentUsernameHolder, "username", false, username);
+    addNewInfo(historyList, recentItemNameHolder, "name", false, username);
+    addNewInfo(historyList, recentDateHolder, "date", false, username);
+    addNewInfo(historyList, recentActionsHolder, "action", false, username);
 
-    addNewInfo(historyList, ownRecentUsernameHolder, "username", true);
-    addNewInfo(historyList, ownRecentItemNameHolder, "name", true);
-    addNewInfo(historyList, ownRecentDateHolder, "date", true);
-    addNewInfo(historyList, ownRecentActionsHolder, "action", true);
+    addNewInfo(historyList, ownRecentUsernameHolder, "username", true, username);
+    addNewInfo(historyList, ownRecentItemNameHolder, "name", true, username);
+    addNewInfo(historyList, ownRecentDateHolder, "date", true, username);
+    addNewInfo(historyList, ownRecentActionsHolder, "action", true, username);
 }
 
 
-function addNewInfo(historyList, Holder, info, own){
+function addNewInfo(historyList, Holder, info, own, username){
     for (i in historyList){
         var li = document.createElement("li");
         var liText = historyList[i][info]
         if (info == "date"){
             liText = liText.split("T")[0];
         }
-        if (!own || historyList[i]["username"] == "1"){
+        if (own || historyList[i]["username"] == username){
             li.appendChild(document.createTextNode(liText));
         }
         Holder.appendChild(li);
